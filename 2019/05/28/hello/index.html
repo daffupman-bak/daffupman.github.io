@@ -6,13 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>hello | Welcome to my Blog</title>
+  <title>hello | DPM | Welcome</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="more便签不能用？？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hello">
 <meta property="og:url" content="http://yoursite.com/2019/05/28/hello/index.html">
-<meta property="og:site_name" content="Welcome to my Blog">
+<meta property="og:site_name" content="DPM | Welcome">
 <meta property="og:description" content="more便签不能用？？">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-05-28T10:51:17.954Z">
@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="hello">
 <meta name="twitter:description" content="more便签不能用？？">
   
-    <link rel="alternative" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="DPM | Welcome" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/nofaceman.ico">
@@ -29,7 +29,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: #B0C4DE;
     }
   </style>
   
@@ -57,20 +57,16 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章 </a>
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)"> 关于我</a>
     			
             
 		</nav>
@@ -103,10 +99,6 @@
 			
 			
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -121,10 +113,6 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
-		        
 				</ul>
 			</nav>
 		</header>				
@@ -178,6 +166,23 @@
 
       
 	  
+		<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'd758508d86a082228bfd',
+    clientSecret: '42d8a88cb4136163da2f19204a162378043f7853',
+    id: "hello",
+    repo: 'daffupman.github.io',
+    owner: 'Daffupman',
+    admin: 'Daffupman',
+    distractionFreeMode: 'true',
+  })
+  gitalk.render('gitalk-container')
+</script>
+	  
       <div class="clearfix"></div>
     </div>
   </div>
@@ -215,10 +220,11 @@
   <div id="gitalk-container"></div>
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
 <script type="text/javascript">
   var gitalk = new Gitalk({
-    clientID: '',
-    clientSecret: '',
+    clientID: 'd758508d86a082228bfd',
+    clientSecret: '42d8a88cb4136163da2f19204a162378043f7853',
     id: "hello",
     repo: 'daffupman.github.io',
     owner: 'Daffupman',
@@ -258,7 +264,7 @@
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -287,11 +293,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章 </a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme"> 关于我</a></li>
       
         
     </ul>
