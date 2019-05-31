@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | DPM&#39;s Blog</title>
+  <title>Java编程思想——第一章：对象导论 | DPM&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DPM&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="1.抽象过程1.1 Java语言的五个基本特性  万物皆对象； 程序是对象的集合，它们通过发送消息来告知彼此所要的做的； 每个对象都有自己的由其他对象所构成的存储； 每个对象都拥有其类型； 某一特定类型的所有对象都可以接受同样的消息。  对象具有状态、行为和标识。意味着每一个对象都可以拥有内部数据和方法，并且每一个对象都可以与其他对象区分开来（每一个对象在内存中都有一个唯一的地址）。  2.每个对">
+<meta name="keywords" content="java,Java编程思想">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java编程思想——第一章：对象导论">
+<meta property="og:url" content="http://yoursite.com/2019/05/31/Java编程思想——第一章：对象导论/index.html">
 <meta property="og:site_name" content="DPM&#39;s Blog">
+<meta property="og:description" content="1.抽象过程1.1 Java语言的五个基本特性  万物皆对象； 程序是对象的集合，它们通过发送消息来告知彼此所要的做的； 每个对象都有自己的由其他对象所构成的存储； 每个对象都拥有其类型； 某一特定类型的所有对象都可以接受同样的消息。  对象具有状态、行为和标识。意味着每一个对象都可以拥有内部数据和方法，并且每一个对象都可以与其他对象区分开来（每一个对象在内存中都有一个唯一的地址）。  2.每个对">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-31T02:22:47.060Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DPM&#39;s Blog">
+<meta name="twitter:title" content="Java编程思想——第一章：对象导论">
+<meta name="twitter:description" content="1.抽象过程1.1 Java语言的五个基本特性  万物皆对象； 程序是对象的集合，它们通过发送消息来告知彼此所要的做的； 每个对象都有自己的由其他对象所构成的存储； 每个对象都拥有其类型； 某一特定类型的所有对象都可以接受同样的消息。  对象具有状态、行为和标识。意味着每一个对象都可以拥有内部数据和方法，并且每一个对象都可以与其他对象区分开来（每一个对象在内存中都有一个唯一的地址）。  2.每个对">
   
     <link rel="alternative" href="/atom.xml" title="DPM&#39;s Blog" type="application/atom+xml">
   
@@ -130,36 +135,88 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java编程思想——第一章：对象导论" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/31/Java编程思想——第一章：对象导论/" class="archive-article-date">
-  	<time datetime="2019-05-31T01:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>05/31/2019</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/31/Java编程思想——第一章：对象导论/">Java编程思想——第一章：对象导论</a>
+    <h1 class="article-title" itemprop="name">
+      Java编程思想——第一章：对象导论
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/05/31/Java编程思想——第一章：对象导论/" class="archive-article-date">
+  	<time datetime="2019-05-31T01:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>05/31/2019</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-抽象过程"><a href="#1-抽象过程" class="headerlink" title="1.抽象过程"></a>1.抽象过程</h4><h5 id="1-1-Java语言的五个基本特性"><a href="#1-1-Java语言的五个基本特性" class="headerlink" title="1.1 Java语言的五个基本特性"></a>1.1 Java语言的五个基本特性</h5><blockquote>
+<ul>
+<li>万物皆对象；</li>
+<li>程序是对象的集合，它们通过发送消息来告知彼此所要的做的；</li>
+<li>每个对象都有自己的由其他对象所构成的存储；</li>
+<li>每个对象都拥有其类型；</li>
+<li>某一特定类型的所有对象都可以接受同样的消息。</li>
+</ul>
+<p><code>对象具有状态、行为和标识。意味着每一个对象都可以拥有内部数据和方法，并且每一个对象都可以与其他对象区分开来（每一个对象在内存中都有一个唯一的地址）。</code></p>
+</blockquote>
+<h4 id="2-每个对象都有一个接口"><a href="#2-每个对象都有一个接口" class="headerlink" title="2.每个对象都有一个接口"></a>2.每个对象都有一个接口</h4><ul>
+<li>因为类描述了具有相同特性和行为的对象集合，所以类实际上就是一个数据类型；</li>
+<li>对象满足的请求都由接口（interface）定义；</li>
+</ul>
+<h4 id="3-每个对象都提供服务"><a href="#3-每个对象都提供服务" class="headerlink" title="3.每个对象都提供服务"></a>3.每个对象都提供服务</h4><ul>
+<li>将对象看做是服务提供者，有助于提高对象的内聚性</li>
+</ul>
+<h4 id="4-被隐藏的具体实现"><a href="#4-被隐藏的具体实现" class="headerlink" title="4.被隐藏的具体实现"></a>4.被隐藏的具体实现</h4><ul>
+<li>程序开发人员分为 <code>类创建者</code> 和 <code>客户端程序员</code>；</li>
+<li>访问控制可以在具有关系所涉及的各方设置边界，让客户端程序员无法触及它们不应该触及的部分，也允许库设计者可以改变类内部的工作方式而不用担心影响到客户端程序员；</li>
+<li>访问控制的关键字：<code>public</code>、<code>包访问权限</code>、<code>protected</code>、<code>private</code>。</li>
+</ul>
+<h4 id="5-复用具体实现"><a href="#5-复用具体实现" class="headerlink" title="5.复用具体实现"></a>5.复用具体实现</h4><ul>
+<li>一旦类被创建并测试完，那它就应该代表一个有用的代码单元<ul>
+<li>组合：新类中持有该类的对象，通常使用private修饰。如果组合是动态发生的，称为聚合；</li>
+<li>组合比继承更加简单灵活。</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-继承"><a href="#6-继承" class="headerlink" title="6.继承"></a>6.继承</h4><ul>
+<li>通过继承能以现有类为基础，复制它，然后通过添加和修改这个副本来创建新类；</li>
+<li>继承应该只覆盖基类的方法？is-a : is-like-a；</li>
+</ul>
+<h4 id="7-伴随多态的可互换对象"><a href="#7-伴随多态的可互换对象" class="headerlink" title="7.伴随多态的可互换对象"></a>7.伴随多态的可互换对象</h4><ul>
+<li>后期绑定：当对象发送消息时，被调用的代码直到运行时才能确定。编译器确保被调用方法的存在，并对调用参数和返回值执行类型检查，但是并不知道将被执行的确切代码。</li>
+</ul>
+<h4 id="8-单根继承结构"><a href="#8-单根继承结构" class="headerlink" title="8.单根继承结构"></a>8.单根继承结构</h4><ul>
+<li>在Java中，所有类最终都继承单一的类（Object）</li>
+</ul>
+<h4 id="9-容器"><a href="#9-容器" class="headerlink" title="9.容器"></a>9.容器</h4><ul>
+<li>容器在任何时候都可以扩充自己以容纳置于其中的所有东西；</li>
+<li>使用泛型可以让容器知道自己保存的类型对象；</li>
+</ul>
+<h4 id="10-对象的创建和生命期"><a href="#10-对象的创建和生命期" class="headerlink" title="10.对象的创建和生命期"></a>10.对象的创建和生命期</h4><ul>
+<li>为追求最大的执行速度，对象存储空间和生命周期可以在编写程序时确定，这可以通过将对象置于<code>堆栈</code>或静态存储区域内来实现。或者在堆内存池中动态创建对象。</li>
+<li>在堆栈中创建存储空间和释放存储空间，速度很快，只需要移动栈顶指针即可（下移创建，上移释放）。</li>
+<li>Java的垃圾回收器用来处理内存释放问题。</li>
+</ul>
+<h4 id="11-异常错误"><a href="#11-异常错误" class="headerlink" title="11.异常错误"></a>11.异常错误</h4><ul>
+<li>如果没有编写正确的处理异常的代码，会得到一条编译时的错误信息；</li>
+<li>异常处理不是面向对象的特征。</li>
+</ul>
+<h4 id="12-并发编程"><a href="#12-并发编程" class="headerlink" title="12.并发编程"></a>12.并发编程</h4><h4 id="13-Java与Internet"><a href="#13-Java与Internet" class="headerlink" title="13.Java与Internet"></a>13.Java与Internet</h4><hr>
+<p><code>5/31/2019 created</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -175,19 +232,67 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+
+		
+		  <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'd758508d86a082228bfd',
+    clientSecret: '42d8a88cb4136163da2f19204a162378043f7853',
+    id: "Java编程思想——第一章：对象导论",
+    repo: 'daffupman.github.io',
+    owner: 'Daffupman',
+    admin: 'Daffupman',
+    distractionFreeMode: 'true',
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
+
   
 
-    
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
+
 
 
           </div>
@@ -210,8 +315,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
