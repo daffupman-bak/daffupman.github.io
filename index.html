@@ -159,36 +159,7 @@
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s;	<span class="comment">//这里只创建了一个引用</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="2-必须由你创建所有对象"><a href="#2-必须由你创建所有对象" class="headerlink" title="2.必须由你创建所有对象"></a>2.必须由你创建所有对象</h4><p>使用new可以将引用与新对象关联</p>
-<h5 id="2-1-存储到什么地方"><a href="#2-1-存储到什么地方" class="headerlink" title="2.1 存储到什么地方"></a>2.1 存储到什么地方</h5><ul>
-<li>寄存器：位于处理器内部，不可直接控制；</li>
-<li>堆栈：位于通用RAM中，一般存储对象的引用；</li>
-<li>堆：一种通用内存池，存放所有的Java对象；堆不同于堆栈的好处是：编译器不需要知道存储的数据在堆里存活多长时间；</li>
-<li>常量存储：程序代码内部；</li>
-<li>非RAM存储：程序之外。比如流对象和持久化对象，JDBC和Hibernate机制。</li>
-</ul>
-<p>2.2 特例：基本类型</p>
-<ul>
-<li>基本类型存储在堆栈，更加高效</li>
-</ul>
-<p>2.3 Java中的数组</p>
-<h4 id="3-永远不要销毁对象"><a href="#3-永远不要销毁对象" class="headerlink" title="3.永远不要销毁对象"></a>3.永远不要销毁对象</h4><p>3.1 作用域</p>
-<ul>
-<li>作用域决定了在其内定义的变量名的可见性和生命周期；</li>
-</ul>
-<p>3.2 对象的作用域</p>
-<ul>
-<li>对象在作用域终点就会消失，Java的垃圾回收器用来监视用new创建的所有对象，并辨识那些不会再被引用的对象，随后回收这个对象的空间；</li>
-</ul>
-<h4 id="4-创建新的数据类型：类"><a href="#4-创建新的数据类型：类" class="headerlink" title="4.创建新的数据类型：类"></a>4.创建新的数据类型：类</h4><h4 id="5-方法、参数和返回值"><a href="#5-方法、参数和返回值" class="headerlink" title="5.方法、参数和返回值"></a>5.方法、参数和返回值</h4><h4 id="6-构建一个Java程序"><a href="#6-构建一个Java程序" class="headerlink" title="6.构建一个Java程序"></a>6.构建一个Java程序</h4><h5 id="6-1-名字可见性"><a href="#6-1-名字可见性" class="headerlink" title="6.1 名字可见性"></a>6.1 名字可见性</h5><h5 id="6-2-运用其他构件"><a href="#6-2-运用其他构件" class="headerlink" title="6.2 运用其他构件"></a>6.2 运用其他构件</h5><h5 id="6-3-static关键字"><a href="#6-3-static关键字" class="headerlink" title="6.3 static关键字"></a>6.3 static关键字</h5><ul>
-<li>当声明一个事务是static时，意味着这个域或方法不会与包含它的那个类的任何对象示例关联在一起；</li>
-<li>static对每个类来说只有一份存储空间，而非static字段则是对每个对象都有一个存储空间；</li>
-</ul>
-<h4 id="7-第一个Java程序"><a href="#7-第一个Java程序" class="headerlink" title="7.第一个Java程序"></a>7.第一个Java程序</h4><h4 id="8-注释和嵌入式文档"><a href="#8-注释和嵌入式文档" class="headerlink" title="8.注释和嵌入式文档"></a>8.注释和嵌入式文档</h4><h4 id="9-编码风格"><a href="#9-编码风格" class="headerlink" title="9.编码风格"></a>9.编码风格</h4><ul>
-<li>驼峰风格</li>
-</ul>
-<p><code>5/31/2019</code></p>
-
+        
       
 
       
@@ -196,6 +167,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
