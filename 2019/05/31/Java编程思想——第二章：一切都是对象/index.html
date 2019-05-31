@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>DPM&#39;s Blog</title>
+  <title>Java编程思想——第二章：一切都是对象 | DPM&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DPM&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="1.用引用操作对象 Java中一切都被看作是对象，但操纵的标识符实际上是对象的一个引用。  拥有一个引用，并不一定需要有一个对象与它关联。   1String s;	//这里只创建了一个引用   2.必须由你创建所有对象使用new可以将引用与新对象关联 2.1 存储到什么地方 寄存器：位于处理器内部，不可直接控制； 堆栈：位于通用RAM中，一般存储对象的引用； 堆：一种通用内存池，存放所有的Jav">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java编程思想——第二章：一切都是对象">
+<meta property="og:url" content="http://yoursite.com/2019/05/31/Java编程思想——第二章：一切都是对象/index.html">
 <meta property="og:site_name" content="DPM&#39;s Blog">
+<meta property="og:description" content="1.用引用操作对象 Java中一切都被看作是对象，但操纵的标识符实际上是对象的一个引用。  拥有一个引用，并不一定需要有一个对象与它关联。   1String s;	//这里只创建了一个引用   2.必须由你创建所有对象使用new可以将引用与新对象关联 2.1 存储到什么地方 寄存器：位于处理器内部，不可直接控制； 堆栈：位于通用RAM中，一般存储对象的引用； 堆：一种通用内存池，存放所有的Jav">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-31T03:20:51.679Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DPM&#39;s Blog">
+<meta name="twitter:title" content="Java编程思想——第二章：一切都是对象">
+<meta name="twitter:description" content="1.用引用操作对象 Java中一切都被看作是对象，但操纵的标识符实际上是对象的一个引用。  拥有一个引用，并不一定需要有一个对象与它关联。   1String s;	//这里只创建了一个引用   2.必须由你创建所有对象使用new可以将引用与新对象关联 2.1 存储到什么地方 寄存器：位于处理器内部，不可直接控制； 堆栈：位于通用RAM中，一般存储对象的引用； 堆：一种通用内存池，存放所有的Jav">
   
     <link rel="alternative" href="/atom.xml" title="DPM&#39;s Blog" type="application/atom+xml">
   
@@ -130,16 +134,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Java编程思想——第二章：一切都是对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Java编程思想——第二章：一切都是对象" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/31/Java编程思想——第二章：一切都是对象/">Java编程思想——第二章：一切都是对象</a>
+    <h1 class="article-title" itemprop="name">
+      Java编程思想——第二章：一切都是对象
     </h1>
   
 
@@ -199,83 +201,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/31/Java编程思想——第二章：一切都是对象/">展开全文 >></a>
-        </p>
-      
 
       
 
 		
-</div></div></article>
-  
-    <article id="post-Java编程思想——第一章：对象导论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/31/Java编程思想——第一章：对象导论/">Java编程思想——第一章：对象导论</a>
-    </h1>
-  
+		  <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'd758508d86a082228bfd',
+    clientSecret: '42d8a88cb4136163da2f19204a162378043f7853',
+    id: "Java编程思想——第二章：一切都是对象",
+    repo: 'daffupman.github.io',
+    owner: 'Daffupman',
+    admin: 'Daffupman',
+    distractionFreeMode: 'true',
+  })
+  gitalk.render('gitalk-container')
+</script>
 
-        
-        <a href="/2019/05/31/Java编程思想——第一章：对象导论/" class="archive-article-date">
-  	<time datetime="2019-05-31T01:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>05/31/2019</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-抽象过程"><a href="#1-抽象过程" class="headerlink" title="1.抽象过程"></a>1.抽象过程</h4><h5 id="1-1-Java语言的五个基本特性"><a href="#1-1-Java语言的五个基本特性" class="headerlink" title="1.1 Java语言的五个基本特性"></a>1.1 Java语言的五个基本特性</h5><blockquote>
-<ul>
-<li>万物皆对象；</li>
-<li>程序是对象的集合，它们通过发送消息来告知彼此所要的做的；</li>
-<li>每个对象都有自己的由其他对象所构成的存储；</li>
-<li>每个对象都拥有其类型；</li>
-<li>某一特定类型的所有对象都可以接受同样的消息。</li>
-</ul>
-<p><code>对象具有状态、行为和标识。意味着每一个对象都可以拥有内部数据和方法，并且每一个对象都可以与其他对象区分开来（每一个对象在内存中都有一个唯一的地址）。</code></p>
-</blockquote>
-        
-      
-
-      
+      <div class="clearfix"></div>
     </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  </div>
+</article>
 
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/31/Java编程思想——第一章：对象导论/">展开全文 >></a>
-        </p>
-      
-
-      
-
-		
-</div></div></article>
+  
+<nav id="article-nav">
   
   
+    <a href="/2019/05/31/Java编程思想——第一章：对象导论/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java编程思想——第一章：对象导论</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
+
 
 
           </div>
@@ -297,8 +290,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
