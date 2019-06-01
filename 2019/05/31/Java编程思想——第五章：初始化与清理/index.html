@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="DPM&#39;s Blog">
 <meta property="og:description" content="Java采用构造器，创建对象时自动调用。对于不再使用的内存资源，使用垃圾回收器自动将其释放">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-31T15:06:50.026Z">
+<meta property="og:updated_time" content="2019-06-01T03:10:09.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java编程思想——第五章：初始化与清理">
 <meta name="twitter:description" content="Java采用构造器，创建对象时自动调用。对于不再使用的内存资源，使用垃圾回收器自动将其释放">
@@ -224,7 +224,41 @@
 </ul>
 </li>
 </ul>
-<p><code>5/31/2019 created</code></p>
+<h4 id="6-成员初始化"><a href="#6-成员初始化" class="headerlink" title="6.成员初始化"></a>6.成员初始化</h4><ul>
+<li><p>Java尽力保证：所有变量在使用前都能得到恰当的初始化。</p>
+</li>
+<li><p>类的每个基本数据成员保证都会有一个初始值。如果不将对象引用初始化，会默认为null。</p>
+</li>
+<li><p>如果但对于方法的局部变量，Java以编译是错误形式来贯彻这种保证。因此强制程序员提供一个初始值，往往能够帮助找出程序的缺陷。</p>
+</li>
+</ul>
+<h4 id="7-构造器初始化"><a href="#7-构造器初始化" class="headerlink" title="7.构造器初始化"></a>7.构造器初始化</h4><p>在运行时刻，可以调用方法或执行某些动作来确定初值。但要牢记：无法阻止自动初始化的进行，它将在构造器被调用之前发生。</p>
+<h5 id="7-1-初始化顺序"><a href="#7-1-初始化顺序" class="headerlink" title="7.1 初始化顺序"></a>7.1 初始化顺序</h5><ul>
+<li>在类的内部，变量定义的先后顺序决定了初始化的顺序。即使变量定义散布于方法定义之间，它们仍旧会在任何方法（包括构造器）被调用之前得到初始化。</li>
+</ul>
+<h5 id="7-2-静态数据的初始化"><a href="#7-2-静态数据的初始化" class="headerlink" title="7.2 静态数据的初始化"></a>7.2 静态数据的初始化</h5><ul>
+<li><p>无论创建多少个对象，静态数据都<strong>只占用一份存储区域</strong>。static关键字不能应用于局部变量，因此它<strong>只能作用于域</strong>。如果一个域是静态的基本类型域，且也没有对它进行初始化，那么它就会获得基本类型的标准初值；如果它是一个对象引用，那么它的默认初始化值就是null。</p>
+</li>
+<li><p>静态初始化只有在必要时刻才会进行。当对象被创建的时候，初始化才会开始。</p>
+</li>
+<li>初始化的顺序，先是静态对象，而后是非静态对象。</li>
+</ul>
+<h5 id="7-3-显式地静态初始化"><a href="#7-3-显式地静态初始化" class="headerlink" title="7.3 显式地静态初始化"></a>7.3 显式地静态初始化</h5><ul>
+<li>Java允许将对个静态初始化动作组织成一个特殊的静态子句（静态块），这段代码只执行一次。</li>
+</ul>
+<h5 id="7-4-非静态示例初始化"><a href="#7-4-非静态示例初始化" class="headerlink" title="7.4 非静态示例初始化"></a>7.4 非静态示例初始化</h5><ul>
+<li>实例初始化，用来初始化每一个对象的非静态变量。</li>
+</ul>
+<h4 id="8-数组初始化"><a href="#8-数组初始化" class="headerlink" title="8.数组初始化"></a>8.数组初始化</h4><ul>
+<li><p>将一个数组复制给另一个数组，只是复制了一个引用</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a1 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> a2 = a1;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a2.length; i ++)&#123;</span><br><span class="line">    a2[i] = a2[i] + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a1.length; i ++)&#123;</span><br><span class="line">    print(a1[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//234</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="9-枚举类型"><a href="#9-枚举类型" class="headerlink" title="9.枚举类型"></a>9.枚举类型</h4><ul>
+<li>当创建enum时，编译器会自动添加一些有用的特性。例如，它会自动创建<code>toString()</code>方法，以便你可以方便地显示某个enum实例的名字。还会创建<code>ordinal()</code>方法，用来表示某个特定enum常量的声明顺序，以及<code>static value()</code>方法，用来按照enum方法的声明顺序，产生有这些常量值构成的数组。</li>
+</ul>
+<p><br><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">31/05/2019	:created</span><br><span class="line">01/06/2019	:add 6,7,8,9</span><br></pre></td></tr></table></figure>
 
       
 
@@ -279,6 +313,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/06/01/Java编程思想——第七章：复用类/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java编程思想——第七章：复用类
+        
+      </div>
+    </a>
   
   
     <a href="/2019/05/31/Java编程思想——第二章：一切都是对象/" id="article-nav-older" class="article-nav-link-wrap">
