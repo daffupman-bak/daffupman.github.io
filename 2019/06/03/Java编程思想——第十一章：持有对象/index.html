@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: java | DPM&#39;s Blog</title>
+  <title>Java编程思想——第十一章：持有对象 | DPM&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DPM&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/java/index.html">
+  <meta name="description" content="容器提供完善的方法来保存对象，还拥有一些特性。Java容器类都可以自动地调整自己的尺寸。">
+<meta name="keywords" content="java,Java编程思想">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java编程思想——第十一章：持有对象">
+<meta property="og:url" content="http://yoursite.com/2019/06/03/Java编程思想——第十一章：持有对象/index.html">
 <meta property="og:site_name" content="DPM&#39;s Blog">
+<meta property="og:description" content="容器提供完善的方法来保存对象，还拥有一些特性。Java容器类都可以自动地调整自己的尺寸。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-03T13:08:24.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DPM&#39;s Blog">
+<meta name="twitter:title" content="Java编程思想——第十一章：持有对象">
+<meta name="twitter:description" content="容器提供完善的方法来保存对象，还拥有一些特性。Java容器类都可以自动地调整自己的尺寸。">
   
     <link rel="alternative" href="/atom.xml" title="DPM&#39;s Blog" type="application/atom+xml">
   
@@ -130,36 +135,98 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Java编程思想——第十一章：持有对象" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Java编程思想——第十一章：持有对象
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/03/Java编程思想——第十一章：持有对象/" class="archive-article-date">
+
+        
+        <a href="/2019/06/03/Java编程思想——第十一章：持有对象/" class="archive-article-date">
   	<time datetime="2019-06-03T12:21:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/03/2019</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/03/Java编程思想——第十一章：持有对象/">Java编程思想——第十一章：持有对象</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>容器提供完善的方法来保存对象，还拥有一些特性。Java容器类都可以自动地调整自己的尺寸。<br><a id="more"></a></p>
+<h4 id="1-泛型和类型安全的容器"><a href="#1-泛型和类型安全的容器" class="headerlink" title="1.泛型和类型安全的容器"></a>1.泛型和类型安全的容器</h4><ul>
+<li>通过使用泛型，可以在编译期防止将错误类型的对象放置到容器中。</li>
+<li>将元素从容器中拿出时，类型转换也不再是必需的了。因为容器直到它保存的是什么类型，因此它会在调用 <code>get()</code> 时替你执行转型。</li>
+</ul>
+<h4 id="2-基本概念"><a href="#2-基本概念" class="headerlink" title="2.基本概念"></a>2.基本概念</h4><ul>
+<li><p>容器类类库的两个不同概念：</p>
+<ul>
+<li><code>Collection</code> ：一个独立元素的序列，这些元素都服从一条或多条规则。<code>List</code> 必须按照插入的顺序保存元素，而 <code>Set</code> 不能有重复元素。 <code>Queue</code> 按照排队规则来确定对象产生的顺序。</li>
+<li><p><code>Map</code> ：一组成对的键值对对象，允许使用键来查值。</p>
+<p>所有的 <code>Collection</code> 都可以用 <code>foreach</code> 语法遍历。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-添加一组元素"><a href="#3-添加一组元素" class="headerlink" title="3.添加一组元素"></a>3.添加一组元素</h4><ul>
+<li><p><code>Arrays.asList()</code> 方法接受一个数组或是一个用逗号分隔的元素列表，并将其转换为一个List对象。</p>
+</li>
+<li><p><code>Collection.addAll()</code> 方法接受一个Collection对象，以及一个数组或是一个用逗号分割的列表，将元素添加到Collection中。</p>
+</li>
+<li><p>在 <code>Arrays.asList()</code> 中间插入一条“线索”，以告诉编译器对于由<code>Arrays.asList()</code> 产生的List类型，实际目的类型应该是什么，这称为 <code>显式类型</code>。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Snow&gt; snow = Arrays.&lt;Snow&gt;asList(<span class="keyword">new</span> Light(),<span class="keyword">new</span> Heavy());</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="4-容器的打印"><a href="#4-容器的打印" class="headerlink" title="4.容器的打印"></a>4.容器的打印</h4><ul>
+<li>Collection打印出来的内容用方括号括住，逗号分隔。Map则用大括号括住，键与值由等号联系。</li>
+</ul>
+<h4 id="5-List"><a href="#5-List" class="headerlink" title="5.List"></a>5.List</h4><ul>
+<li>List承诺将元素维护在特定的序列中。<ul>
+<li><code>ArrayList</code></li>
+<li><code>LinkedList</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="6-迭代器"><a href="#6-迭代器" class="headerlink" title="6.迭代器"></a>6.迭代器</h4><ul>
+<li>迭代器只是使用容器，不用关系容器的类型。它是一个对象，工作是遍历并选择序列中的对象，而客户端程序员不必知道或关系该序列底层的结构。常被称为轻量级对象。</li>
+</ul>
+<h4 id="7-ListIterator"><a href="#7-ListIterator" class="headerlink" title="7.ListIterator"></a>7.ListIterator</h4><ul>
+<li><code>ListIterator</code> 是一个更强大的Iterator子类型。它只能用于各种List类的访问。可以双向移动还可以产生相对于迭代器在列表中指向当前位置的前一个和后一个元素的指引，并且可以使用set()方法替换它访问过的最后一个元素。可以通过调用 <code>ListIterator()</code> 方法产生一个指向List开始处的 <code>ListIterator</code> ，并且还可以通过调用 <code>listIterator(n)</code> 方法创建一个开始就指向列表为n的元素处的 <code>ListIterator</code>。</li>
+</ul>
+<h4 id="8-LinkedList"><a href="#8-LinkedList" class="headerlink" title="8.LinkedList"></a>8.LinkedList</h4><ul>
+<li><code>LinkedList</code> 添加了可以使其用作栈、队列或双端队列的方法。</li>
+</ul>
+<h4 id="9-Set"><a href="#9-Set" class="headerlink" title="9.Set"></a>9.Set</h4><ul>
+<li>Set不保存重复的元素。Set具有和Collection完全一样的接口，因此没有额外的功能。Set就是Collection，只是行为不同。</li>
+</ul>
+<h4 id="10-Map"><a href="#10-Map" class="headerlink" title="10.Map"></a>10.Map</h4><ul>
+<li>Map能将对象映射到其他对象。</li>
+<li>Map可以返回它的键的Set（使用<code>keySet()</code>方法），它的值的Collection，或是键值对的Set。</li>
+</ul>
+<h4 id="11-Queue"><a href="#11-Queue" class="headerlink" title="11.Queue"></a>11.Queue</h4><ul>
+<li>队列是一个FIFO的容器。队列被当作一种可靠的将对象从程序的某个区域传输到另一区域的途径。队列在并发编程中特别重要，因为它们可以安全地将对象从一个任务传输到另一个任务。</li>
+<li>优先级队列声明下一个弹出元素是最需要的元素。</li>
+</ul>
+<h4 id="12-Collection和Iterator"><a href="#12-Collection和Iterator" class="headerlink" title="12.Collection和Iterator"></a>12.Collection和Iterator</h4><ul>
+<li><code>Collection</code> 是描述有序容器的共性的根接口。</li>
+<li>通过针对接口而非具体实现来编写代码，我们的代码可以应用于更多的对象类型。</li>
+</ul>
+<h4 id="13-Foreach与迭代器"><a href="#13-Foreach与迭代器" class="headerlink" title="13.Foreach与迭代器"></a>13.Foreach与迭代器</h4><ul>
+<li>foreach语法主要用于数组，但是它也可以应用于任何Collection对象。</li>
+<li>Iterable接口包含一个能够产生Iterator的 <code>iterator()</code> 方法，并且Iterable接口被foreach用来在序列中移动。因此如果你创建了任何实现Iterable的类，都可以将它用于foreach语句中。</li>
+</ul>
+<p><br><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">03/06/2019 :created</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -175,271 +242,77 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+
+		
+		  <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'd758508d86a082228bfd',
+    clientSecret: '42d8a88cb4136163da2f19204a162378043f7853',
+    id: "Java编程思想——第十一章：持有对象",
+    repo: 'daffupman.github.io',
+    owner: 'Daffupman',
+    admin: 'Daffupman',
+    distractionFreeMode: 'true',
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/02/Java编程思想——第九章：接口/" class="archive-article-date">
-  	<time datetime="2019-06-02T04:37:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/02/2019</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/02/Java编程思想——第九章：接口/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java编程思想——第九章：接口</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/02/Java编程思想——第九章：接口/">Java编程思想——第九章：接口</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/01/Java编程思想——第八章：多态/" class="archive-article-date">
-  	<time datetime="2019-06-01T08:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/01/2019</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/01/Java编程思想——第八章：多态/">Java编程思想——第八章：多态</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/01/Java编程思想——第七章：复用类/" class="archive-article-date">
-  	<time datetime="2019-06-01T03:19:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/01/2019</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/01/Java编程思想——第七章：复用类/">Java编程思想——第七章：复用类</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/31/Java编程思想——第五章：初始化与清理/" class="archive-article-date">
-  	<time datetime="2019-05-31T06:41:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>05/31/2019</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/31/Java编程思想——第五章：初始化与清理/">Java编程思想——第五章：初始化与清理</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/31/Java编程思想——第二章：一切都是对象/" class="archive-article-date">
-  	<time datetime="2019-05-31T02:46:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>05/31/2019</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/31/Java编程思想——第二章：一切都是对象/">Java编程思想——第二章：一切都是对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/31/Java编程思想——第一章：对象导论/" class="archive-article-date">
-  	<time datetime="2019-05-31T01:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>05/31/2019</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/31/Java编程思想——第一章：对象导论/">Java编程思想——第一章：对象导论</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -462,9 +335,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
