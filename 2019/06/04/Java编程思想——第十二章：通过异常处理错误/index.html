@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="DPM&#39;s Blog">
 <meta property="og:description" content="发现错误的理想时机是在编译阶段。编译期间并不能找出所有的错误，余下的问题必须再运行期间解决。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-04T14:23:17.382Z">
+<meta property="og:updated_time" content="2019-06-05T07:14:00.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java编程思想——第十二章：通过异常处理错误">
 <meta name="twitter:description" content="发现错误的理想时机是在编译阶段。编译期间并不能找出所有的错误，余下的问题必须再运行期间解决。">
@@ -227,9 +227,45 @@
 <li><code>RuntimeException</code> 属于运行时异常，会自动被JVM抛出。它们也被称为“不受检查异常”，这种异常属于错误，将被自动捕获。</li>
 <li>只能在代码中忽略 <code>RuntimeException</code> 及其子类的异常，其他类型异常的处理都是有编译器强制实施的。究其原因， <code>RuntimeException</code> 是编程错误。</li>
 </ul>
+<h4 id="8-使用finally进行清理"><a href="#8-使用finally进行清理" class="headerlink" title="8.使用finally进行清理"></a>8.使用finally进行清理</h4><p>对于一些代码，在异常处理程序的后面加上 <code>finally子句</code> ，那么无论 <code>try块</code> 中的异常是否抛出，它们都能得到执行。</p>
+<h5 id="8-1-finally用来做什么"><a href="#8-1-finally用来做什么" class="headerlink" title="8.1 finally用来做什么"></a>8.1 finally用来做什么</h5><ul>
+<li>finally子句能保证无论try块发生了什么，内存总能得到释放。</li>
+<li>当要把除内存之外的资源恢复到它们的初始状态时，就要用到finally子句。这种资源包括：已经打开的文件或网络连接等等。</li>
+</ul>
+<h6 id="8-2-在return中使用finally"><a href="#8-2-在return中使用finally" class="headerlink" title="8.2 在return中使用finally"></a>8.2 在return中使用finally</h6><ul>
+<li>因为finally子句总会执行，所有在一个方法中。可以从多个点返回，并且可以保证重要的清理工作仍会执行。</li>
+</ul>
+<h5 id="8-3-缺憾：异常丢失"><a href="#8-3-缺憾：异常丢失" class="headerlink" title="8.3 缺憾：异常丢失"></a>8.3 缺憾：异常丢失</h5><ul>
+<li>异常作为程序出错的标志，绝不应该被忽略，但它还是有可能被忽略。<ul>
+<li>在try块中包含另一个try-catch语句，可能会丢失外层的异常。</li>
+<li>在finally子句中执行return</li>
+</ul>
+</li>
+</ul>
+<h4 id="9-异常的限制"><a href="#9-异常的限制" class="headerlink" title="9.异常的限制"></a>9.异常的限制</h4><ul>
+<li>当覆盖方法的时候，只能抛出在基类方法的异常说明里那些列出的那些异常。</li>
+</ul>
+<h4 id="10-构造器"><a href="#10-构造器" class="headerlink" title="10.构造器"></a>10.构造器</h4><ul>
+<li>在大多数情况下，异常发生所有东西都能被正常清理。但是在涉及构造器时，由于构造器会吧对象设置成安全的初始状态，还会有别的动作，如打开文件等。这些动作只有在对象使用完毕并且用户调用了特殊的清理方法之后才能得以清理。如果在构造器内抛出异常，这些清理行为也许不能正常工作了。</li>
+</ul>
+<h4 id="11-异常匹配"><a href="#11-异常匹配" class="headerlink" title="11.异常匹配"></a>11.异常匹配</h4><ul>
+<li>抛出异常的时候，异常处理系统会按照代码的书写顺序找出最近的处理程序。找到匹配的处理程序之后，它就认为异常将得到处理，然后就不再继续查找了。</li>
+</ul>
+<h4 id="12-其他可选方式"><a href="#12-其他可选方式" class="headerlink" title="12.其他可选方式"></a>12.其他可选方式</h4><h4 id="13-异常使用指南"><a href="#13-异常使用指南" class="headerlink" title="13.异常使用指南"></a>13.异常使用指南</h4><p>应该在下列情况使用异常：</p>
+<ul>
+<li>在恰当的处理级别处理问题</li>
+<li>解决问题并且重新调用产生异常的方法</li>
+<li>进行少许修补，然后绕过异常发生的地方继续执行</li>
+<li>用别的数据进行计算，以替代方法预计会返回的值</li>
+<li>把当前运行环境下能做的事情尽量做完，然后把 <code>相同的异常</code> 重抛到更高层</li>
+<li>把当前运行环境下能做的事情尽量做完，然后把 <code>不同的异常</code> 重抛到更高层</li>
+<li>终止程序</li>
+<li>进行简化</li>
+<li>让类库和程序更安全</li>
+</ul>
 <p><br></p>
 <p><br></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">04/06/2019 :created</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">04/06/2019 :created</span><br><span class="line">05/06/2019 :add 8,9,10,11,12,13</span><br></pre></td></tr></table></figure>
 
       
 
@@ -284,6 +320,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/06/05/Java编程思想——第十三章：字符串/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java编程思想——第十三章：字符串
+        
+      </div>
+    </a>
   
   
     <a href="/2019/06/03/Java编程思想——第十一章：持有对象/" id="article-nav-older" class="article-nav-link-wrap">
@@ -413,6 +458,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Java编程思想——第十三章：字符串</a>
               </li>
             
             <div class="clearfix"></div>

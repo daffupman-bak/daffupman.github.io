@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java编程思想——第七章：复用类 | DPM&#39;s Blog</title>
+  <title>Tag: Java编程思想——第十三章：字符串 | DPM&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="复用代码的两种方法  组合：在新的类中产生现有类的对象。 继承：按照现有类的类型来创建新类，无需改变现有类的形式，采用现有类的形式并在其中添加新代码。">
-<meta name="keywords" content="java,Java编程思想">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java编程思想——第七章：复用类">
-<meta property="og:url" content="http://yoursite.com/2019/06/01/Java编程思想——第七章：复用类/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="DPM&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/tags/Java编程思想——第十三章：字符串/index.html">
 <meta property="og:site_name" content="DPM&#39;s Blog">
-<meta property="og:description" content="复用代码的两种方法  组合：在新的类中产生现有类的对象。 继承：按照现有类的类型来创建新类，无需改变现有类的形式，采用现有类的形式并在其中添加新代码。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-01T06:50:03.313Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java编程思想——第七章：复用类">
-<meta name="twitter:description" content="复用代码的两种方法  组合：在新的类中产生现有类的对象。 继承：按照现有类的类型来创建新类，无需改变现有类的形式，采用现有类的形式并在其中添加新代码。">
+<meta name="twitter:title" content="DPM&#39;s Blog">
   
     <link rel="alternative" href="/atom.xml" title="DPM&#39;s Blog" type="application/atom+xml">
   
@@ -135,81 +130,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java编程思想——第七章：复用类" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Java编程思想——第七章：复用类
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/06/05/Java编程思想——第十三章：字符串/" class="archive-article-date">
+  	<time datetime="2019-06-05T07:13:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/05/2019</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/06/05/Java编程思想——第十三章：字符串/">Java编程思想——第十三章：字符串</a>
     </h1>
   
 
-        
-        <a href="/2019/06/01/Java编程思想——第七章：复用类/" class="archive-article-date">
-  	<time datetime="2019-06-01T03:19:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/01/2019</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>复用代码的两种方法</p>
-<ul>
-<li>组合：在新的类中产生现有类的对象。</li>
-<li>继承：按照现有类的类型来创建新类，无需改变现有类的形式，采用现有类的形式并在其中添加新代码。</li>
-</ul>
-<a id="more"></a>
-<h4 id="1-组合语法"><a href="#1-组合语法" class="headerlink" title="1.组合语法"></a>1.组合语法</h4><p>将对象引用置于新类中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WaterSource</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String s;</span><br><span class="line">    WaterSource()&#123;</span><br><span class="line">        System.out.println(<span class="string">"WaterSource()"</span>);</span><br><span class="line">        s = <span class="string">"constructed"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> s; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="2-继承语法"><a href="#2-继承语法" class="headerlink" title="2.继承语法"></a>2.继承语法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cleanser</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Detergent</span> <span class="keyword">extends</span> <span class="title">Cleanser</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="2-1-初始化基类"><a href="#2-1-初始化基类" class="headerlink" title="2.1 初始化基类"></a>2.1 初始化基类</h5><ul>
-<li>基类在导出类构造器可以访问它之前，就已经完成了初始化。</li>
-<li>类中含有默认的构造器，编译器可以轻松地调用它们是因为不必要考虑传递什么参数。但是，如果没有默认的基类构造器，或想调用一个带参数的基类构造器，就必须用关键字<code>super</code>显式地编写调用基类构造器的语句，并配以适当的参数列表。</li>
-<li>调用基类构造器是你在导出类构造器中要做的第一件事。</li>
-</ul>
-<h4 id="3-代理"><a href="#3-代理" class="headerlink" title="3.代理"></a>3.代理</h4><ul>
-<li>继承和组合的中庸之道。因为我们将一个成员对象置于所要构造的类中（组合），但与此同时我们在新类中暴露了该成员对象（继承）。</li>
-</ul>
-<h4 id="4-结合使用组合和继承"><a href="#4-结合使用组合和继承" class="headerlink" title="4.结合使用组合和继承"></a>4.结合使用组合和继承</h4><p>同时使用组合和继承是很常见的事。</p>
-<h5 id="4-1-确保正确清理"><a href="#4-1-确保正确清理" class="headerlink" title="4.1 确保正确清理"></a>4.1 确保正确清理</h5><ul>
-<li>有时类可能要在其生命周期内执行一些必须的清理活动，需要显示地编写一个特殊的方法来做这件事，并要确保客户端程序员知晓他们必须要调用这一方法。其首要任务就是，必须将这一清理动作置于 <code>finally子句</code> 中，以防异常的出现。</li>
-</ul>
-<h5 id="4-2-名称屏蔽"><a href="#4-2-名称屏蔽" class="headerlink" title="4.2 名称屏蔽"></a>4.2 名称屏蔽</h5><ul>
-<li>如果Java的基类拥有某个已被多次重载的方法名称，那么在导出类中重新定义该方法名称并不会屏蔽在积累中的任何版本。无论是在该层或者它的基类中对方法进行定义，重载机制都可以正常工作。</li>
-</ul>
-<h4 id="5-在组合和继承之间选择"><a href="#5-在组合和继承之间选择" class="headerlink" title="5.在组合和继承之间选择"></a>5.在组合和继承之间选择</h4><p>组合和继承都允许在新的类中放置子对象，组合是显式地这样做，而继承是隐式地做。</p>
-<p>组合技术通常用于想在新类中 <strong>使用现有类的功能</strong> 而非它的接口这种情形。</p>
-<h4 id="6-protected关键字"><a href="#6-protected关键字" class="headerlink" title="6.protected关键字"></a>6.protected关键字</h4><p>protected对任何继承于此类的导出类或其他任何位于同一包内的类来说，它是可以访问的。</p>
-<h4 id="7-向上转型"><a href="#7-向上转型" class="headerlink" title="7.向上转型"></a>7.向上转型</h4><h4 id="8-final关键字"><a href="#8-final关键字" class="headerlink" title="8.final关键字"></a>8.final关键字</h4><p>final的三种情况：数据、方法、类</p>
-<h5 id="8-1-final数据"><a href="#8-1-final数据" class="headerlink" title="8.1 final数据"></a>8.1 final数据</h5><ul>
-<li>使用final修改的常量是一块很定不变的数据，这类常量是基本数据类型，并且在定义的时候就要赋值。</li>
-<li>根据惯例，即使static又是final的域（即编译期常量）将用大写表示，并使用下划线分隔单词。</li>
-<li>Java允许生成空白final，但必须再域定义处或每个构造器中用表达式对final赋值。</li>
-</ul>
-<h5 id="8-2-final方法"><a href="#8-2-final方法" class="headerlink" title="8.2 final方法"></a>8.2 final方法</h5><ul>
-<li>使用final方法的原因<ul>
-<li>把方法锁定，以防任何继承类修改它的含义；</li>
-<li>效率。</li>
-</ul>
-</li>
-<li>类中所有的private方法都隐式地指定为final；</li>
-</ul>
-<h5 id="8-3-final类"><a href="#8-3-final类" class="headerlink" title="8.3 final类"></a>8.3 final类</h5><ul>
-<li>将某个类的定义为final时，表明了你不打算继承该类。</li>
-<li>由于final类禁止继承，所以final类中所有的方法都隐式指定为是final的，因为无法覆盖它们。</li>
-</ul>
-<p><br><br></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01/06/2019 :created</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -219,92 +169,25 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想——第十三章：字符串</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-
-		
-		  <div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<div id="gitalk-container"></div>
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'd758508d86a082228bfd',
-    clientSecret: '42d8a88cb4136163da2f19204a162378043f7853',
-    id: "Java编程思想——第七章：复用类",
-    repo: 'daffupman.github.io',
-    owner: 'Daffupman',
-    admin: 'Daffupman',
-    distractionFreeMode: 'true',
-  })
-  gitalk.render('gitalk-container')
-</script>
-
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/06/01/Java编程思想——第八章：多态/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java编程思想——第八章：多态
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/05/31/Java编程思想——第五章：初始化与清理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java编程思想——第五章：初始化与清理</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-
-
-
+    
 
 
           </div>
@@ -327,9 +210,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
