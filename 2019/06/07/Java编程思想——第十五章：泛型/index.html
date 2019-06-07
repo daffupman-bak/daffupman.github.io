@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java编程思想——第十四章：类型信息  | DPM&#39;s Blog</title>
+  <title>Java编程思想——第十五章：泛型 | DPM&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="运行时类型信息使得你可以在程序运行时发现和使用类型信息。">
+  <meta name="description" content="泛型实现了 参数化类型 的概念，使代码可以应用多种类型。">
 <meta name="keywords" content="java,Java编程思想">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java编程思想——第十四章：类型信息 ">
-<meta property="og:url" content="http://yoursite.com/2019/06/06/Java编程思想——第十四章：类型信息/index.html">
+<meta property="og:title" content="Java编程思想——第十五章：泛型">
+<meta property="og:url" content="http://yoursite.com/2019/06/07/Java编程思想——第十五章：泛型/index.html">
 <meta property="og:site_name" content="DPM&#39;s Blog">
-<meta property="og:description" content="运行时类型信息使得你可以在程序运行时发现和使用类型信息。">
+<meta property="og:description" content="泛型实现了 参数化类型 的概念，使代码可以应用多种类型。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-06T14:10:32.944Z">
+<meta property="og:updated_time" content="2019-06-07T12:36:54.763Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java编程思想——第十四章：类型信息 ">
-<meta name="twitter:description" content="运行时类型信息使得你可以在程序运行时发现和使用类型信息。">
+<meta name="twitter:title" content="Java编程思想——第十五章：泛型">
+<meta name="twitter:description" content="泛型实现了 参数化类型 的概念，使代码可以应用多种类型。">
   
     <link rel="alternative" href="/atom.xml" title="DPM&#39;s Blog" type="application/atom+xml">
   
@@ -135,97 +135,76 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java编程思想——第十四章：类型信息" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java编程思想——第十五章：泛型" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java编程思想——第十四章：类型信息 
+      Java编程思想——第十五章：泛型
     </h1>
   
 
         
-        <a href="/2019/06/06/Java编程思想——第十四章：类型信息/" class="archive-article-date">
-  	<time datetime="2019-06-06T13:11:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/06/2019</time>
+        <a href="/2019/06/07/Java编程思想——第十五章：泛型/" class="archive-article-date">
+  	<time datetime="2019-06-07T00:44:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/07/2019</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>运行时类型信息使得你可以在程序运行时发现和使用类型信息。</p>
+        <p>泛型实现了 <strong>参数化类型</strong> 的概念，使代码可以应用多种类型。</p>
 <a id="more"></a>
-<p>Java让我们能在运行时识别对象和类的信息的两种方式：</p>
-<ol>
-<li>传统的RTTI：它假定我们在编译时已经知道了所有的类型；</li>
-<li>反射机制：它允许我们在运行时发现和使用类信息。</li>
-</ol>
-<h4 id="1-为什么需要RTTI"><a href="#1-为什么需要RTTI" class="headerlink" title="1.为什么需要RTTI"></a>1.为什么需要RTTI</h4><ul>
-<li><p>当把 <code>Shape</code> 对象放入 <code>List&lt;Shape&gt;</code>的数组时会向上转型。但在向上转型为 <code>Shape</code> 的时候也丢失了 <code>Shape对象</code> 的具体类型。对于数组而言，它们只是 <code>Shape</code> 类的对象。</p>
-<p>  当从数组中取出元素时，这种容器—实际上他将所有的事物当作 <code>Object</code> 持有—会自动将结果转型回 <code>Shape</code> 。这是RTTI最基本的使用形式，因为在Java中，所有类型转换都是在运行时进行正确性检查的。</p>
-<p>  接下来就是多态机制的事情了，<code>Shape</code> 对象实际执行什么样的代码，是由引用所指向的具体对象 <code>Circle</code> 、<code>Square</code>或 <code>Triangle</code> 而决定的。你希望大部分代码尽可能地了解对象的具体类型，而是只与对象家族的一个通用表示打交道。</p>
+<p>多态算是一种泛化机制。将方法的参数类型设为基类，那么该方法就可以接受从这个基类中导出的任何类作为参数。使用基类能够具备更好的灵活性。但是，考虑到除了 <code>final类</code> 不能拓展，其他任何类都可以被拓展，所以这种灵活性大多数时候也会有一些性能损耗。</p>
+<p>方法参数是一个接口也会放松限制。可是有时候，即便使用了接口，对程序的约束还是太强了。因为一旦指明接口，它就要求你的代码必须使用特定的接口。而我们希望达到的目的是编写更通用的代码，要使代码能够应用于某种不具体的类型，而不是一个具体的接口或类。</p>
+<h4 id="1-与c-的比较"><a href="#1-与c-的比较" class="headerlink" title="1.与c++的比较"></a>1.与c++的比较</h4><h4 id="2-简单泛型"><a href="#2-简单泛型" class="headerlink" title="2.简单泛型"></a>2.简单泛型</h4><p><strong>创造容器类</strong> 是促成泛型出现的一个重要原因。泛型的主要目的之一就是用来指定容器要持有什么类型的对象，而且有编译器来保证类型的正确性。</p>
+<p>与其使用Object我们更喜欢暂时不指定类型，而是稍后再决定具体使用什么类型。要达到这个目的，要使用类型参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T a;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Holder</span><span class="params">(T a)</span> </span>&#123;<span class="keyword">this</span>.a = a;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T a)</span> </span>&#123;<span class="keyword">this</span>.a = a;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> a;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-1-一个元祖类库"><a href="#2-1-一个元祖类库" class="headerlink" title="2.1 一个元祖类库"></a>2.1 一个元祖类库</h5><ul>
+<li><strong>元祖</strong> ：它是将一组对象直接打包存储于其中的一个单一对象。这个容器对象允许读取其中元素，但是不允许向其中存放新的对象。元祖也被称为数据传送对象或信使。元祖可以具有任意长度，其中的元素可以是任意不同的类型。还可以利用继承机制实现长度更长的元祖。</li>
+<li>为了使用元祖，你只需定义一个长度适合的元祖，将其作为方法的返回值，然后在return语句中创建该元祖，并返回即可。</li>
+</ul>
+<h5 id="2-2-一个堆栈类"><a href="#2-2-一个堆栈类" class="headerlink" title="2.2 一个堆栈类"></a>2.2 一个堆栈类</h5><h4 id="3-泛型接口"><a href="#3-泛型接口" class="headerlink" title="3.泛型接口"></a>3.泛型接口</h4><ul>
+<li><p>泛型也可以应用于接口。例如 <strong>生成器（generator）</strong>，这是一种专门负责创建对象的类。实际上，这是 <strong>工厂方法设计模式</strong> 的一种应用。不过，当使用生成器创建新的对象时，它不需要任何参数，而工厂方法一般需要参数。</p>
+</li>
+<li><p>一般而言，一个生成器只定义一个方法，该方法用以产生新的对象。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Generator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function">T <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="2-Class对象"><a href="#2-Class对象" class="headerlink" title="2.Class对象"></a>2.Class对象</h4><p>Class对象就是用来创建类的所有的常规对象。</p>
-<p>类似程序的一部分，每一个类都有一个Class对象。为了生成这个类的对象，运行这个程序的Java虚拟机将使用被称为 <code>类加载器</code> 的子系统。</p>
-<p><code>Class.forName()</code> 可以获取Class对象的引用。<code>getName()</code>产生全限定的类名，并分别使用 <code>getSimpleName()</code> 和<code>getCanonicalName()</code> 来产生不含包名的类名和全限定名。<code>isInterface()</code> 可以告诉你这个Class对象是否表示某个接口。还可以使用 <code>getSuperclass()</code> 方法查询其直接基类。</p>
-<h5 id="2-1-类字面常量"><a href="#2-1-类字面常量" class="headerlink" title="2.1 类字面常量"></a>2.1 类字面常量</h5><ul>
-<li><p>使用字面常量也可以生成对Class对象的引用</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FancyToy.class</span><br></pre></td></tr></table></figure>
-<p>  类字面常量不仅可以应用于普通的类，也可以应用于接口、数组以及基本数据类型。</p>
-<p>  当使用 <code>.class</code> 来创建对Class对象的引用时，不会自动地初始化该Class对象。为使用类而做的准备工作实际包含三个步骤：</p>
-<ol>
-<li>加载：这是由类加载器执行的；</li>
-<li>链接：在链接阶段将验证类中的字节码，为静态域分配存储空间，并且如果必须的话，将解析这个类创建的对其他类的所有引用。</li>
-<li>初始化：如果该类具有超类，则对其初始化，执行静态初始化其和静态初始化块。</li>
-</ol>
-</li>
-<li><p><code>Class.forName()</code> 会立即执行初始化；</p>
-</li>
+<h4 id="4-泛型方法"><a href="#4-泛型方法" class="headerlink" title="4.泛型方法"></a>4.泛型方法</h4><p>泛型方法使得该方法能够独立于类而产生变化。如果使用泛型方法可以取代整个类泛型化，那么就应该只使用泛型方法，因为它可以使事情更清楚明白。</p>
+<h5 id="4-1-杠杆利用类型参数推断"><a href="#4-1-杠杆利用类型参数推断" class="headerlink" title="4.1 杠杆利用类型参数推断"></a>4.1 杠杆利用类型参数推断</h5><h5 id="4-2-可变参数与泛型方法"><a href="#4-2-可变参数与泛型方法" class="headerlink" title="4.2 可变参数与泛型方法"></a>4.2 可变参数与泛型方法</h5><ul>
+<li>泛型方法与可变参数列表能够很好地共存</li>
 </ul>
-<h5 id="2-2-泛化的Class引用"><a href="#2-2-泛化的Class引用" class="headerlink" title="2.2 泛化的Class引用"></a>2.2 泛化的Class引用</h5><ul>
-<li><p>Class引用总是指向某个Class对象，它可以制造类的示例，并包含可作用与这些实例的所有方法代码。它还包含该类的静态成员，因此，Class引用表示的就是它所指向的对象的确切类型。而该对象便是Class类的一个对象。</p>
-<p>  尽管泛型类引用只能赋值为指向其声明的类型，但是普通类引用可以被重新赋值为指向任何其他的Class对象。通过泛型语法可以让编译器强制执行额外的类型检查。</p>
+<h5 id="4-3-用于Generator的泛型方法"><a href="#4-3-用于Generator的泛型方法" class="headerlink" title="4.3 用于Generator的泛型方法"></a>4.3 用于Generator的泛型方法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Generators</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Collection&lt;T&gt; <span class="title">fill</span><span class="params">(Collection&lt;T&gt; coll, Generator&lt;T&gt; gen, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++)</span><br><span class="line">            coll.add(gen.next());</span><br><span class="line">        <span class="keyword">return</span> coll;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4-4-一个通用的Generator"><a href="#4-4-一个通用的Generator" class="headerlink" title="4.4 一个通用的Generator"></a>4.4 一个通用的Generator</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BasicGenerator</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Generator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Class&lt;T&gt; type;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BasicGenerator</span><span class="params">(Class&lt;T&gt; type)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> type.newInstance();</span><br><span class="line">        &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Generator&lt;T&gt; <span class="title">create</span><span class="params">(Class&lt;T&gt; type)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BasicGenerator&lt;T&gt;(type);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-匿名内部类"><a href="#5-匿名内部类" class="headerlink" title="5.匿名内部类"></a>5.匿名内部类</h4><ul>
+<li>泛型还可以应用于内部类以及匿名内部类。</li>
+</ul>
+<h4 id="6-构建复杂模型"><a href="#6-构建复杂模型" class="headerlink" title="6.构建复杂模型"></a>6.构建复杂模型</h4><ul>
+<li>泛型的一个重要好处是能够简单而安全地创建复杂的模型。</li>
+</ul>
+<h4 id="7-擦除的神秘之处"><a href="#7-擦除的神秘之处" class="headerlink" title="7.擦除的神秘之处"></a>7.擦除的神秘之处</h4><ul>
+<li><p>根据JDK文档的描述，<code>Class.getTypeParameters()</code> 将返回一个 <code>TypeVarible</code> 对象数组，表示有泛型声明的类型参数…这只是表示用作参数占位符的标识符，这并非有用的信息。所以</p>
+<p>  <strong>在泛型代码内部所声明的类型参数，无法获得任何有关泛型参数类型的信息</strong></p>
+<p>  因此，你可以知道诸如类型参数标识符和泛型类型边界这类的信息——你却无法知道用来创建某个特定实例的实际的类型参数。</p>
+<p>  Java泛型是使用擦除来实现的，这意味着当你在使用泛型时，任何具体的类型信息都被擦除了，你唯一知道的就是你在使用一个对象。因此，<code>List&lt;String&gt;</code> 和 <code>List&lt;Integer&gt;</code> 在运行时实际上是相同的类型。这两种类型都被擦除成它们的原生类型，即 <code>List</code>。</p>
 </li>
-<li><p>使用通配符 <code>?</code> 放松限制，<code>?</code>代表任何事物。</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; intClass = <span class="keyword">int</span>.class;</span><br></pre></td></tr></table></figure>
-<p>  限定创建Class引用的范围</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;? extends Numner&gt; bounded = <span class="keyword">int</span>.class;</span><br><span class="line">Class&lt;? <span class="keyword">super</span> FancyToy&gt; up = ftClass.getSuperclass();</span><br></pre></td></tr></table></figure>
+<li><p>泛型类型只有在静态类型检查期间才出现。在此之后，程序中的所有泛型类型都被擦除，替换为他们的非泛型上界。普通类型被擦除成 <code>Object</code>。</p>
+<p>  擦除的核心动机是它使得泛化的客户端可以用非泛化的类库来使用，反之亦然，这经常被称为 <strong>迁移兼容性</strong>。</p>
 </li>
-<li><p><code>newInstance()</code> 返回的不是精确类型，而只是Object。</p>
+<li><p>擦除的代价是显著的。翻寻个不能用于显式地引用运行时类型的操作之中，例如转型、<code>instanceof</code>操作和 <code>new表达式</code>。因为所有关于参数的类型信息都丢失了。</p>
 </li>
 </ul>
-<h5 id="2-3-新的转型语法"><a href="#2-3-新的转型语法" class="headerlink" title="2.3 新的转型语法"></a>2.3 新的转型语法</h5><ul>
-<li><code>cast()</code>用于Class引用的转型语法，新的转型语法对于无法使用普通转型的情况显得非常有用。</li>
-</ul>
-<h4 id="3-类型转换前先做检查"><a href="#3-类型转换前先做检查" class="headerlink" title="3.类型转换前先做检查"></a>3.类型转换前先做检查</h4><p>RTTI的第三种形式，就是关键字 <code>instanceof</code>。它返回一个布尔值，告诉我们对象是不是某个特定类型的实例。</p>
-<h5 id="3-1-使用类字面量"><a href="#3-1-使用类字面量" class="headerlink" title="3.1 使用类字面量"></a>3.1 使用类字面量</h5><h5 id="3-2-动态的-instanceof"><a href="#3-2-动态的-instanceof" class="headerlink" title="3.2 动态的 instanceof"></a>3.2 动态的 <code>instanceof</code></h5><ul>
-<li><code>Class.isInstance</code> 方法提供了一种动态地测试对象的途径。</li>
-</ul>
-<h5 id="3-3-递归计数"><a href="#3-3-递归计数" class="headerlink" title="3.3 递归计数"></a>3.3 递归计数</h5><h4 id="4-注册工厂"><a href="#4-注册工厂" class="headerlink" title="4 注册工厂"></a>4 注册工厂</h4><ul>
-<li>使用 <code>工厂方法</code> 设计模式，将对象的创建工作交给类自己去完成。</li>
-</ul>
-<h4 id="5-instanceof与Class的等价性"><a href="#5-instanceof与Class的等价性" class="headerlink" title="5.instanceof与Class的等价性"></a>5.instanceof与Class的等价性</h4><h4 id="6-反射：运行时的类信息"><a href="#6-反射：运行时的类信息" class="headerlink" title="6.反射：运行时的类信息"></a>6.反射：运行时的类信息</h4><ul>
-<li>如果不知道某个对象的确切类型，RTTI可以告诉你。但这个类型在编译时必须已知。</li>
-<li>人们想要在运行时获取类的信息的另一动机，便是希望提供在跨网络的远程平台上创建和运行对象的能力。这种被称为远程方法调用，它允许一个Java程序将对象分布到多台机器上。</li>
-<li>RTTI和反射之间真正的区别在于：对于RTTI来说，编译器在编译时打开和检查 <code>.class</code> 文件。而对于反射机制来说，在运行时打开和检查 <code>.class</code> 文件。</li>
-</ul>
-<h4 id="7-动态代理"><a href="#7-动态代理" class="headerlink" title="7.动态代理"></a>7.动态代理</h4><ul>
-<li>Java的动态代理比代理的思想更向前迈进一步，因为它可以动态创建代理并动态地处理对所代理方法的调用。在动态代理上所做的所有调用都会被重定向到单一的调用处理器上，它的工作室揭示调用的类型并确定相应的对策。</li>
-</ul>
-<h4 id="8-空对象"><a href="#8-空对象" class="headerlink" title="8.空对象"></a>8.空对象</h4><p>空对象最有用支出在于它更靠近数据，因为对象表示的是问题空间内的实体。</p>
-<h5 id="8-1-模拟对象与桩"><a href="#8-1-模拟对象与桩" class="headerlink" title="8.1 模拟对象与桩"></a>8.1 模拟对象与桩</h5><ul>
-<li><p>空对象的逻辑变体是模拟对象和桩。与空对象一样，它们都表示在最终的程序中所使用的实际对象。</p>
-<p>  模拟对象和桩之间的差异在于程度不同。模拟对象往往是轻量级和自测试的，通常很多模拟对象被创建出来是为了处理各种不同的测试情况。桩只是返回桩数据，它通常是重量级的。</p>
+<h4 id="8-擦除的补偿"><a href="#8-擦除的补偿" class="headerlink" title="8.擦除的补偿"></a>8.擦除的补偿</h4><ul>
+<li><p>擦除丢失了在泛型代码中执行某些操作的能力。任何在运行需要周到确切类型信息的操作都将无法工作。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Erased</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> SIZE = <span class="number">100</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">(Object arg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(arg <span class="keyword">instanceof</span> T) &#123;				<span class="comment">//ERROR</span></span><br><span class="line">            T <span class="keyword">var</span> = <span class="keyword">new</span> T();				<span class="comment">//ERROR</span></span><br><span class="line">            T[] array = <span class="keyword">new</span> T[SIZE];		<span class="comment">//ERROR</span></span><br><span class="line">            T[] array = (T)<span class="keyword">new</span> Object[SIZE]; <span class="comment">//unchecked warning</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  使用 <code>instanceof</code> 的尝试是失败的，因为其类型信息已经被擦除了。如果引入类型标签，就可以转用动态的 <code>isInstance()</code> 。</p>
 </li>
-</ul>
-<h4 id="9-接口与类型信息"><a href="#9-接口与类型信息" class="headerlink" title="9.接口与类型信息"></a>9.接口与类型信息</h4><ul>
-<li>interface关键字的一种重要目标就是允许程序员隔离构建，进而降低耦合性。如果你编写接口，那么就可以实现这一目标，但是通过类型信息，这种耦合性还是会传播出去——接口并非是对解耦的一种无懈可击的保障。最简单的解决方式是对实现使用包访问权限。</li>
 </ul>
 <p><br><br></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">06/06/2019 :created</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">07</span>/<span class="number">06</span>/<span class="number">2019</span> :created,just half.</span><br></pre></td></tr></table></figure>
 
       
 
@@ -264,7 +243,7 @@
   var gitalk = new Gitalk({
     clientID: 'd758508d86a082228bfd',
     clientSecret: '42d8a88cb4136163da2f19204a162378043f7853',
-    id: "Java编程思想——第十四章：类型信息 ",
+    id: "Java编程思想——第十五章：泛型",
     repo: 'daffupman.github.io',
     owner: 'Daffupman',
     admin: 'Daffupman',
@@ -281,18 +260,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/07/Java编程思想——第十五章：泛型/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java编程思想——第十五章：泛型
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/05/Java编程思想——第十三章：字符串/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java编程思想——第十三章：字符串</div>
+    <a href="/2019/06/06/Java编程思想——第十四章：类型信息/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java编程思想——第十四章：类型信息 </div>
       <i class="icon-circle-right"></i>
     </a>
   
