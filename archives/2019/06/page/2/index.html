@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java编程思想——第二十章：注解 | DPM&#39;s Blog</title>
+  <title>Archives: 2019/6 | DPM&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="注解 也被成为元数据，为我们在代码中添加信息提供了一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。">
-<meta name="keywords" content="java,Java编程思想">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java编程思想——第二十章：注解">
-<meta property="og:url" content="http://yoursite.com/2019/06/09/Java编程思想——第二十章：注解/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="DPM&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/archives/2019/06/page/2/index.html">
 <meta property="og:site_name" content="DPM&#39;s Blog">
-<meta property="og:description" content="注解 也被成为元数据，为我们在代码中添加信息提供了一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-09T10:25:43.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java编程思想——第二十章：注解">
-<meta name="twitter:description" content="注解 也被成为元数据，为我们在代码中添加信息提供了一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。">
+<meta name="twitter:title" content="DPM&#39;s Blog">
   
     <link rel="alternative" href="/atom.xml" title="DPM&#39;s Blog" type="application/atom+xml">
   
@@ -135,82 +130,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java编程思想——第二十章：注解" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Java编程思想——第二十章：注解
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/06/01/Java编程思想——第七章：复用类/" class="archive-article-date">
+  	<time datetime="2019-06-01T03:19:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/01/2019</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/06/01/Java编程思想——第七章：复用类/">Java编程思想——第七章：复用类</a>
     </h1>
   
 
-        
-        <a href="/2019/06/09/Java编程思想——第二十章：注解/" class="archive-article-date">
-  	<time datetime="2019-06-09T09:51:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/09/2019</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>注解</strong> 也被成为元数据，为我们在代码中添加信息提供了一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。</p>
-<a id="more"></a>
-<p>注解可以提供用来完整地描述程序所需的信息，而这些信息是无法用Java来表达的。</p>
-<p>定义在 <code>java.lang</code> 中的注解：</p>
-<ul>
-<li><code>@Override</code>：表示当前的方法定义将覆盖超类中的方法；</li>
-<li><code>@Deprecated</code>：如果程序员使用了注解为它的元素，那么编译器会发出警告信息；</li>
-<li><code>@SuppressWarnings</code>：关闭不当的编译器警告信息。</li>
-</ul>
-<h4 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1.基本语法"></a>1.基本语法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Testable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Executing..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span> <span class="function"><span class="keyword">void</span> <span class="title">testExecute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>被注解的方法与其他的方法没有区别。</p>
-<p>1.1 定义注解</p>
-<p>定义<code>@Test</code>注解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.Method)</span><br><span class="line"><span class="meta">@Retentation</span>(RetentationPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Test&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>注解的元素看起来就像接口的方法，唯一的区别是你可以为其指定默认值。没有元素的注解称为 <strong>标记注解（marker annotation）</strong>。</p>
-<p>1.2 元注解</p>
-<p>元注解负责注解其他的注解</p>
-<table>
-<thead>
-<tr>
-<th>元注解</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@Target</td>
-<td>表示该注解可以用于什么地方。可能的 <code>ElementType</code> 参数包括：CONSTRUCTOR（构造器的声明），FIELD（域声明），LOCAL_VARIABLE（局部变量声明），METHOD（方法声明），PACKAGE（包声明），PARAMETER（参数声明），TYPE（类，接口或<code>enum</code> 声明）。</td>
-</tr>
-<tr>
-<td>@Retention</td>
-<td>表示需要在什么级别保存该注解信息。可选的Retention参数包括：SOURCE,CLASS,RUNTIME</td>
-</tr>
-<tr>
-<td>@Documented</td>
-<td>将此注解包含到Javadoc中</td>
-</tr>
-<tr>
-<td>@Inherited</td>
-<td>允许子类继承父类中的注解</td>
-</tr>
-</tbody>
-</table>
-<h4 id="2-编写注解处理器"><a href="#2-编写注解处理器" class="headerlink" title="2.编写注解处理器"></a>2.编写注解处理器</h4><p>如果没有用来读取注解的工具，那注解也不会比注释更有用。使用注解的过程中，很重要的一部分就是创建与使用 <strong>注解处理器</strong>。</p>
-<p>编译其对元素的默认值有些过分挑剔。首先，元素不能有不确定的值。也就是说元素必须要么具有默认值，要么在使用注解的时候提供元素的值。其次，对于非基本类型的元素。这个约束使得处理器很难表现一个元素的存在或缺失的状态，因为在每个注解的声明中，所有的元素都存在，并且都具有相应的值。为了绕开这个约束，我们只能定义一些特殊的值，例如空字符串或负值。</p>
-<p>不能使用 <code>extends</code> 来继承某个<code>@interface</code>。</p>
-<p><br><br></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">09/06/2019 :created</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -226,88 +175,23 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-
-		
-		  <div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<div id="gitalk-container"></div>
-<script type="text/javascript">
-/*
-  var gitalk = new Gitalk({
-    clientID: 'b8fd6bd3120cbf2ced01',
-    clientSecret: 'a38a5fecc452b37bb84edaa96a5ef39c0fae7742',
-    id: "Java编程思想——第二十章：注解",
-    repo: 'daffupman.github.io',
-    owner: 'Daffupman',
-    admin: 'Daffupman',
-    distractionFreeMode: 'true',
-  })
-  gitalk.render('gitalk-container')
-  */
-</script>
-
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/06/10/Java编程思想——第十九章：枚举类型/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java编程思想——第十九章：枚举类型
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/06/08/Java编程思想——第十六章：数组/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java编程思想——第十六章：数组</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2019/06/">&laquo; Prev</a><a class="page-number" href="/archives/2019/06/">1</a><span class="page-number current">2</span>
+    </nav>
   
-
-  
-
-  
-
-
-
 
 
           </div>
@@ -330,8 +214,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
