@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java编程思想——第十九章：枚举类型 | DPM&#39;s Blog</title>
+  <title>数组 | DPM&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关键字 enum 可以将一组具名的值的有限集合创建为一种新的类型，而这些具名的值可以作为常规的程序组件使用。">
-<meta name="keywords" content="java,Java编程思想">
+  <meta name="description" content="数组用一块连续的内存地址来存储相同类型的一组数据。最大的特点是支持随机访问，但插入、删除操作也因此变得比较低效，平均情况时间复杂度为 O(n) 。在平时的业务开发中，我们可以直接使用编程语言提供的容器类，但是，如果是特别底层的开发，直接使用数组可能会更合适。">
+<meta name="keywords" content="Data Structure,Array">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java编程思想——第十九章：枚举类型">
-<meta property="og:url" content="http://yoursite.com/2019/06/10/Java编程思想——第十九章：枚举类型/index.html">
+<meta property="og:title" content="数组">
+<meta property="og:url" content="http://yoursite.com/2019/06/17/数组/index.html">
 <meta property="og:site_name" content="DPM&#39;s Blog">
-<meta property="og:description" content="关键字 enum 可以将一组具名的值的有限集合创建为一种新的类型，而这些具名的值可以作为常规的程序组件使用。">
+<meta property="og:description" content="数组用一块连续的内存地址来存储相同类型的一组数据。最大的特点是支持随机访问，但插入、删除操作也因此变得比较低效，平均情况时间复杂度为 O(n) 。在平时的业务开发中，我们可以直接使用编程语言提供的容器类，但是，如果是特别底层的开发，直接使用数组可能会更合适。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-10T14:34:13.748Z">
+<meta property="og:updated_time" content="2019-06-18T05:01:32.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java编程思想——第十九章：枚举类型">
-<meta name="twitter:description" content="关键字 enum 可以将一组具名的值的有限集合创建为一种新的类型，而这些具名的值可以作为常规的程序组件使用。">
+<meta name="twitter:title" content="数组">
+<meta name="twitter:description" content="数组用一块连续的内存地址来存储相同类型的一组数据。最大的特点是支持随机访问，但插入、删除操作也因此变得比较低效，平均情况时间复杂度为 O(n) 。在平时的业务开发中，我们可以直接使用编程语言提供的容器类，但是，如果是特别底层的开发，直接使用数组可能会更合适。">
   
     <link rel="alternative" href="/atom.xml" title="DPM&#39;s Blog" type="application/atom+xml">
   
@@ -135,53 +135,52 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java编程思想——第十九章：枚举类型" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-数组" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java编程思想——第十九章：枚举类型
+      数组
     </h1>
   
 
         
-        <a href="/2019/06/10/Java编程思想——第十九章：枚举类型/" class="archive-article-date">
-  	<time datetime="2019-06-10T13:41:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/10/2019</time>
+        <a href="/2019/06/17/数组/" class="archive-article-date">
+  	<time datetime="2019-06-17T12:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/17/2019</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关键字 <code>enum</code> 可以将一组具名的值的有限集合创建为一种新的类型，而这些具名的值可以作为常规的程序组件使用。</p>
+        <p>数组用一块连续的内存地址来存储相同类型的一组数据。最大的特点是支持随机访问，但插入、删除操作也因此变得比较低效，平均情况时间复杂度为 O(n) 。在平时的业务开发中，我们可以直接使用编程语言提供的容器类，但是，如果是特别底层的开发，直接使用数组可能会更合适。</p>
 <a id="more"></a>
-<h4 id="1-基本特性"><a href="#1-基本特性" class="headerlink" title="1.基本特性"></a>1.基本特性</h4><p><code>values()</code> 方法可以返回 <code>enum</code> 实例的数组，而且该数组中的元素严格保持其在 <code>enum</code> 中声明时的顺序，因此你可以在循环中使用 <code>values()</code>返回的数组。</p>
-<p>创建 <code>enum</code> 时，编译器会为你生成一个继承 <code>java.lang.Enum</code> 的类。</p>
-<p><code>ordinal()</code> 方法返回一个 <code>int</code> 值，这是每个 <code>enum</code> 实例在声明时的次序，从0开始，可以使用 <code>==</code> l来比较 <code>enum</code> 实例，编译器会自动提供equals()方法和 <code>hashCode()</code> 方法。<code>Enum</code> 类实现了 <code>Comparable</code> 接口，所以它 具有 <code>compareTo()</code> 方法。同时，它还实现了 <code>Serializable</code> 接口。</p>
-<p>如果在 <code>enum</code> 实例上调用 <code>getDeclaringClass()</code> 方法，我们就能知道其所属的 <code>enum</code> 类。</p>
-<p><code>name()</code> 方法返回的 <code>enum</code> 实例声明时的名字，这与使用 <code>toString()</code> 方法效果相同。 <code>valueOf()</code> 是在 <code>Enum</code> 中定义的 <code>static</code> 方法。它根据给定的名字方法相应的 <code>enum</code> 实例，如果不存在给定的名字实例，将会抛出异常。</p>
-<h5 id="1-1-将静态导入用于-enum"><a href="#1-1-将静态导入用于-enum" class="headerlink" title="1.1 将静态导入用于 enum"></a>1.1 将静态导入用于 <code>enum</code></h5><p>使用 <code>static import</code> 能够将 <code>enum</code> 实例的标识符带入当前的命名空间，所以无需再用 <code>enum</code> 类型来修饰 <code>enum</code> 实例。</p>
-<h4 id="2-向-enum-中添加新方法"><a href="#2-向-enum-中添加新方法" class="headerlink" title="2.向 enum 中添加新方法"></a>2.向 <code>enum</code> 中添加新方法</h4><p>一般来说，我们希望每个枚举实例能够返回对自身的描述，而不仅仅只是默认的 <code>toString()</code> 实现，这只能返回枚举实例的名字。为此，你可以提供一个构造器，专门负责处理这个额外的信息，然后添加一个方法，返回这个描述信息。</p>
-<p>注意，如果你打算定义自己的方法，那么必须在 <code>enum</code>  实例序列的最后添加一个分号。同时，Java要求你必须定义 <code>enum</code> 实例。如果在定义 <code>enum</code> 实例之前定义了任何方法或属性，那么编译时就会报错。</p>
-<p><code>enum</code> 中的构造器默认为 <code>private</code> 。一旦 <code>enum</code> 定义结束，编译器就不允许我们在使用构造器来创建任何实例了。</p>
-<h5 id="2-1-覆盖-enum-的方法"><a href="#2-1-覆盖-enum-的方法" class="headerlink" title="2.1 覆盖 enum 的方法"></a>2.1 覆盖 <code>enum</code> 的方法</h5><p>覆盖 <code>toString()</code> 方法，给我们提供了另一种方式来为枚举实例生成不同的字符串描述信息</p>
-<h4 id="3-switch-语句中的-enum"><a href="#3-switch-语句中的-enum" class="headerlink" title="3.switch 语句中的 enum"></a>3.<code>switch</code> 语句中的 <code>enum</code></h4><p>在switch中使用 <code>enum</code>，是 <code>enum</code> 提供的一项的非常便利的功能。一般来说，在 <code>switch</code> 中只能使用整数值，而枚举实例天生就具备整数值的次序，并且可以通过 <code>ordinal()</code> 方法取得其次序，因此我们可以在 <code>switch</code> 语句中使用 <code>enum</code>。</p>
-<p>虽然一般情况下我们必须使用enum类型来修饰一个enum实例，但是在case语句中却不必在如此，直接使用实例即可。</p>
-<h4 id="4-values-的神秘之处"><a href="#4-values-的神秘之处" class="headerlink" title="4.values()的神秘之处"></a>4.<code>values()</code>的神秘之处</h4><p>编译器会自动添加 <code>static</code> 的 <code>values()</code> 方法。</p>
-<p>可以通过 <code>Class</code> 对象的 <code>getEnumConstants()</code> 方法获取所以实例。</p>
-<h4 id="5-实现，而非继承"><a href="#5-实现，而非继承" class="headerlink" title="5.实现，而非继承"></a>5.实现，而非继承</h4><p>所有的 <code>enum</code> 都继承自 <code>java.lang.Enum</code>类，由于Java不支持多重继承，所以 <code>enum</code> 不能再继承其他类。但可以实现一个或多个接口。</p>
-<h4 id="6-随机选取"><a href="#6-随机选取" class="headerlink" title="6.随机选取"></a>6.随机选取</h4><h4 id="7-使用接口组织枚举"><a href="#7-使用接口组织枚举" class="headerlink" title="7.使用接口组织枚举"></a>7.使用接口组织枚举</h4><p>在一个接口的内部，创建实现该接口的枚举，以此将元素进行分类，可以达到将枚举元素分类组织的目的。</p>
-<h4 id="8-使用-EnumSet-替代标志"><a href="#8-使用-EnumSet-替代标志" class="headerlink" title="8.使用 EnumSet 替代标志"></a>8.使用 <code>EnumSet</code> 替代标志</h4><p><code>enum</code> 要求其成员是唯一的。</p>
-<p>Java SE5引入的 <code>EnumSet</code> ，是为了通过 <code>enum</code> 创建一种替代品，以替代基于 <code>int</code> 的位标志。这种标志可以用来表示某种开关信息。</p>
-<p><code>EnumSet</code> 的优点是，它在说明一个二进制是否存在时，具有更好的表达能力，并且无需担心性能。</p>
-<h4 id="9-使用-EnumMap"><a href="#9-使用-EnumMap" class="headerlink" title="9.使用 EnumMap"></a>9.使用 <code>EnumMap</code></h4><p><code>EnumMap</code> 是一种特殊的<code>Map</code>，它要求其中的键必须来自一个 <code>enum</code>。</p>
-<h4 id="10-常量相关的方法"><a href="#10-常量相关的方法" class="headerlink" title="10.常量相关的方法"></a>10.常量相关的方法</h4><p><code>enum</code> 允许程序员为 <code>enum</code> 实例编写方法，从而为每个 <code>enum</code> 实例赋予各自不同的行为。要实现常量相关的方法，你需要为 <code>enum</code> 定义一个或多个abstract方法，然后为每个 <code>enum</code> 实例实现该抽象方法。</p>
-<p>通过相应 <code>enum</code> 实例，我们可以调用其上的方法。这通常也称为 <code>表驱动的代码（table driven code）</code>。</p>
-<p>每个 <code>enum</code> 元素都是 <code>static final</code> 实例，所以他们无法访问外部类的非静态元素或方法。</p>
-<p><br><br></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10/06/2019 :created</span><br></pre></td></tr></table></figure>
+<h3 id="相比容器，数组的用武之地"><a href="#相比容器，数组的用武之地" class="headerlink" title="相比容器，数组的用武之地"></a>相比容器，数组的用武之地</h3><ol>
+<li>Java中的<code>ArrayList</code>无法存储基本数据类型（Autoboxing和Unboxing会有性能损耗）,所以对性能有要求，需要选用数组。</li>
+<li>如果数据大小已知，且操作简单，则选用数组。</li>
+</ol>
+<h3 id="动态数组类Array"><a href="#动态数组类Array" class="headerlink" title="动态数组类Array"></a>动态数组类Array</h3><p>底层采用静态数组存储数据，类中维护两个变量<code>data</code>和<code>size</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> E[] data;	<span class="comment">//静态数组存储数据</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> size;	<span class="comment">//记录数组中元素的个数，即数组大小</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p><code>resize(int capacity):</code></p>
+<p> 调整容量操作。在插入操作时，如果数组的容量已满，会触发扩容操作；在删除操作后，如果元素数量小于数组容量的四分之一，则触发缩容操作。这里需要注意由于此操作会引发的复杂度震荡，缩容应该避免过于激进。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resize</span><span class="params">(<span class="keyword">int</span> newCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//生成新数组</span></span><br><span class="line">    E[] newData = (E[])<span class="keyword">new</span> Object[newCapacity];</span><br><span class="line">    <span class="comment">//移动数据</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i ++) &#123;</span><br><span class="line">        newData[i] = data[i];</span><br><span class="line">    &#125;</span><br><span class="line">    System.arrayCopy(data,<span class="number">0</span>,newData,<span class="number">0</span>,size);</span><br><span class="line">    <span class="comment">//更新引用</span></span><br><span class="line">    data = newData;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>add(int index, E e):</code></p>
+<p> 在指定的位置index插入指定的元素e</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E e)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//索引检查</span></span><br><span class="line">    <span class="keyword">if</span>(index &lt; <span class="number">0</span> || index &gt;= size) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Index out of bound!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(size == getCapacity()) &#123;</span><br><span class="line">     	<span class="comment">//容量不足，扩容</span></span><br><span class="line">        resize(<span class="number">2</span> * getCapacity());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//从后面开始，元素后移</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = size; i &gt; index; i++) &#123;</span><br><span class="line">        data[i] = data[i-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    data[index] = e;</span><br><span class="line">    size ++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>remove(int index):</code></p>
+<p> 删除指定位置的元素</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//索引检查</span></span><br><span class="line">    <span class="keyword">if</span>(index &lt; <span class="number">0</span> || index &gt;= size) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Index out of bound!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//保存要被删除的数值</span></span><br><span class="line">    E ret = data[index];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = index; i &lt; size; i ++) &#123;</span><br><span class="line">        data[i] = data[i+<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    size --;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(size &lt; getCapacity()/<span class="number">4</span> &amp;&amp; getCapacity/<span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">        resize(getCapacity()/<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>更多操作见：<a href="https://github.com/Daffupman/data-structure/blob/master/src/Ch01_linear/Array.java" target="_blank" rel="noopener">https://github.com/Daffupman/data-structure/blob/master/src/Ch01_linear/Array.java</a></p>
+<p><br></p>
+<p><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">18/06/2019 :created</span><br></pre></td></tr></table></figure>
 
       
 
@@ -195,11 +194,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Data Structure</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
         		</li>
       		
 		</ul>
@@ -221,7 +220,7 @@
   var gitalk = new Gitalk({
     clientID: 'b8fd6bd3120cbf2ced01',
     clientSecret: 'a38a5fecc452b37bb84edaa96a5ef39c0fae7742',
-    id: "Java编程思想——第十九章：枚举类型",
+    id: "数组",
     repo: 'daffupman.github.io',
     owner: 'Daffupman',
     admin: 'Daffupman',
@@ -239,18 +238,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/17/数组/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/18/链表/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          数组
+          链表
         
       </div>
     </a>
   
   
-    <a href="/2019/06/09/Java编程思想——第二十章：注解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java编程思想——第二十章：注解</div>
+    <a href="/2019/06/10/Java编程思想——第十九章：枚举类型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java编程思想——第十九章：枚举类型</div>
       <i class="icon-circle-right"></i>
     </a>
   
