@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>二叉搜索树（BST） | DPM&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="二叉树：每个节点最多有两个孩子，是一种动态数据结构，具有递归结构。  12345678910111213141516//二叉树的节点定义class Node&amp;lt;E extends Comparable&amp;lt;E&amp;gt;&amp;gt; &amp;#123;    E e;    Node left;    Node right;        public Node(e) &amp;#123;        thi">
+  <meta name="description" content="二叉树：每个节点最多有两个孩子，是一种动态数据结构，具有递归结构。">
 <meta name="keywords" content="Data Structure,Binary Search Tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉搜索树（BST）">
 <meta property="og:url" content="http://yoursite.com/2019/06/19/二叉搜索树（BST）/index.html">
 <meta property="og:site_name" content="DPM&#39;s Blog">
-<meta property="og:description" content="二叉树：每个节点最多有两个孩子，是一种动态数据结构，具有递归结构。  12345678910111213141516//二叉树的节点定义class Node&amp;lt;E extends Comparable&amp;lt;E&amp;gt;&amp;gt; &amp;#123;    E e;    Node left;    Node right;        public Node(e) &amp;#123;        thi">
+<meta property="og:description" content="二叉树：每个节点最多有两个孩子，是一种动态数据结构，具有递归结构。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-20T02:21:34.570Z">
+<meta property="og:updated_time" content="2019-06-20T03:15:27.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉搜索树（BST）">
-<meta name="twitter:description" content="二叉树：每个节点最多有两个孩子，是一种动态数据结构，具有递归结构。  12345678910111213141516//二叉树的节点定义class Node&amp;lt;E extends Comparable&amp;lt;E&amp;gt;&amp;gt; &amp;#123;    E e;    Node left;    Node right;        public Node(e) &amp;#123;        thi">
+<meta name="twitter:description" content="二叉树：每个节点最多有两个孩子，是一种动态数据结构，具有递归结构。">
   
     <link rel="alternative" href="/atom.xml" title="DPM&#39;s Blog" type="application/atom+xml">
   
@@ -155,12 +155,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li><p>二叉树：每个节点最多有两个孩子，是一种动态数据结构，具有递归结构。</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//二叉树的节点定义</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">E</span>&gt;&gt; </span>&#123;</span><br><span class="line">    E e;</span><br><span class="line">    Node left;</span><br><span class="line">    Node right;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.e = e;</span><br><span class="line">        left = <span class="keyword">null</span>;</span><br><span class="line">        right = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> e.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 其中空树和只有根节点的树都是二叉树。</p>
-<p> 满二叉树：对于每一个非叶子节点都有两个节点。</p>
-</li>
+        <p>二叉树：每个节点最多有两个孩子，是一种动态数据结构，具有递归结构。</p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//二叉树的节点定义</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">E</span>&gt;&gt; </span>&#123;</span><br><span class="line">    E e;</span><br><span class="line">    Node left;</span><br><span class="line">    Node right;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.e = e;</span><br><span class="line">        left = <span class="keyword">null</span>;</span><br><span class="line">        right = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> e.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中空树和只有根节点的树都是二叉树。</p>
+<p>满二叉树：对于每一个非叶子节点都有两个节点。</p>
+<ol>
 <li><p>二分搜索数（BST）</p>
 <ul>
 <li><p>对于每一个节点的值，都大于其左子树的所有节点，小于其右子树的所有节点。另外存储的元素是可比较的。</p>
