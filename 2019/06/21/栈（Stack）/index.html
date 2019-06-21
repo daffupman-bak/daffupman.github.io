@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>DPM&#39;s Blog</title>
+  <title>栈（Stack） | DPM&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DPM&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="栈是一种线性的数据结构。栈的操作比较特殊：只能在一端插入、删除和查看元素，其他部分则是不可见的。">
+<meta name="keywords" content="Data Structure,Stack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈（Stack）">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/栈（Stack）/index.html">
 <meta property="og:site_name" content="DPM&#39;s Blog">
+<meta property="og:description" content="栈是一种线性的数据结构。栈的操作比较特殊：只能在一端插入、删除和查看元素，其他部分则是不可见的。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-21T12:47:05.425Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DPM&#39;s Blog">
+<meta name="twitter:title" content="栈（Stack）">
+<meta name="twitter:description" content="栈是一种线性的数据结构。栈的操作比较特殊：只能在一端插入、删除和查看元素，其他部分则是不可见的。">
   
     <link rel="alternative" href="/atom.xml" title="DPM&#39;s Blog" type="application/atom+xml">
   
@@ -130,16 +135,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-栈（Stack）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-栈（Stack）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/21/栈（Stack）/">栈（Stack）</a>
+    <h1 class="article-title" itemprop="name">
+      栈（Stack）
     </h1>
   
 
@@ -153,7 +156,24 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>栈是一种线性的数据结构。栈的操作比较特殊：只能在一端插入、删除和查看元素，其他部分则是不可见的。</p>
-        
+<a id="more"></a>
+<ul>
+<li><p>栈是一种先进后出（FILO）的数据结构；</p>
+</li>
+<li><p>栈可以使用数组或链表来实现。使用数组实现的叫顺序栈，使用链表实现的叫链式栈；</p>
+</li>
+<li><p>入栈（push）和出栈（pop）是栈的两个重要操作；</p>
+</li>
+<li><p>栈的接口定义</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Stack</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>;		<span class="comment">//返回是否是空栈</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span></span>;		<span class="comment">//返回栈的大小</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(E e)</span></span>;		<span class="comment">//入栈</span></span><br><span class="line">    <span class="function">E <span class="title">pop</span><span class="params">()</span></span>;		    <span class="comment">//出栈</span></span><br><span class="line">    <span class="function">E <span class="title">peek</span><span class="params">()</span></span>;			<span class="comment">//获取栈顶元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用数组实现</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ArrayStack&lt;E&gt; implements Stack&lt;E&gt; &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Array&lt;E&gt; array;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArrayStack</span><span class="params">()</span></span>&#123;</span><br><span class="line">        array = <span class="keyword">new</span> ArrayStack&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> array.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> array.getSize();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(E e)</span></span>&#123;</span><br><span class="line">        array.addLast(e);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">pop</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> array.removeLast();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">peek</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getLast();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用链表实现</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> LinkedList&lt;E&gt; implements Stack&lt;E&gt; &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> LinkedList&lt;E&gt; list;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArrayStack</span><span class="params">()</span></span>&#123;</span><br><span class="line">        list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> list.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> list.getSize();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(E e)</span></span>&#123;</span><br><span class="line">        list.addLast(e);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">pop</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> list.removeLast();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">peek</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getLast();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
 
       
@@ -179,535 +199,76 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/21/栈（Stack）/">展开全文 >></a>
-        </p>
-      
 
       
 
 		
-</div></div></article>
-  
-    <article id="post-再拾Java基础（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/20/再拾Java基础（一）/">再拾Java基础（一）</a>
-    </h1>
-  
+		  <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+/*
+  var gitalk = new Gitalk({
+    clientID: 'b8fd6bd3120cbf2ced01',
+    clientSecret: 'a38a5fecc452b37bb84edaa96a5ef39c0fae7742',
+    id: "栈（Stack）",
+    repo: 'daffupman.github.io',
+    owner: 'Daffupman',
+    admin: 'Daffupman',
+    distractionFreeMode: 'true',
+  })
+  gitalk.render('gitalk-container')
+  */
+</script>
 
-        
-        <a href="/2019/06/20/再拾Java基础（一）/" class="archive-article-date">
-  	<time datetime="2019-06-20T01:06:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/20/2019</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、byte，short，char数据类型的隐式转换成int的注意点"><a href="#一、byte，short，char数据类型的隐式转换成int的注意点" class="headerlink" title="一、byte，short，char数据类型的隐式转换成int的注意点"></a>一、byte，short，char数据类型的隐式转换成int的注意点</h3><ol>
-<li><p>在运算符（包括算术运算符、关系运算符、赋值运算符、位运算符、三目运算符、逻辑运算符）左右的byte、short、char类型的操作数都会隐式的转换成int类型，然后再做相应的计算，其结果为int类型。</p>
-        
-      
-
-      
-    </li></ol></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">basic</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/20/再拾Java基础（一）/">展开全文 >></a>
-        </p>
-      
-
-      
-
-		
-</div></div></article>
-  
-    <article id="post-二叉搜索树（BST）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/19/二叉搜索树（BST）/">二叉搜索树（BST）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/19/二叉搜索树（BST）/" class="archive-article-date">
-  	<time datetime="2019-06-19T11:38:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/19/2019</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>二叉树：每个节点最多有两个孩子，是一种动态数据结构，具有递归结构。</p>
-        
-      
-
-      
+      <div class="clearfix"></div>
     </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Data Structure</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Binary Search Tree</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  </div>
+</article>
 
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/19/二叉搜索树（BST）/">展开全文 >></a>
-        </p>
-      
-
-      
-
-		
-</div></div></article>
   
-    <article id="post-链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/18/链表/">链表(Linked List)</a>
-    </h1>
   
+    <a href="/2019/06/20/再拾Java基础（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">再拾Java基础（一）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        
-        <a href="/2019/06/18/链表/" class="archive-article-date">
-  	<time datetime="2019-06-18T05:34:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/18/2019</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>链表通过指针将零散的数据块连接在一起，这些内存块被称为节点（Node）。通常每个节点除了储存数据之外还记录下一个节点的地址。</p>
-        
-      
 
-      
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
     </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Data Structure</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Linked List</a>
-        		</li>
-      		
-		</ul>
-	</div>
+</aside>
 
-      
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/18/链表/">展开全文 >></a>
-        </p>
-      
 
-      
-
-		
-</div></div></article>
-  
-    <article id="post-数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/17/数组/">数组(Array)</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/17/数组/" class="archive-article-date">
-  	<time datetime="2019-06-17T12:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/17/2019</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>数组用一块连续的内存地址来存储相同类型的一组数据。最大的特点是支持随机访问，但插入、删除操作也因此变得比较低效，平均情况时间复杂度为 O(n) 。在平时的业务开发中，我们可以直接使用编程语言提供的容器类，但是，如果是特别底层的开发，直接使用数组可能会更合适。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Data Structure</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/17/数组/">展开全文 >></a>
-        </p>
-      
-
-      
-
-		
-</div></div></article>
-  
-    <article id="post-Java编程思想——第十九章：枚举类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/10/Java编程思想——第十九章：枚举类型/">Java编程思想——第十九章：枚举类型</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/10/Java编程思想——第十九章：枚举类型/" class="archive-article-date">
-  	<time datetime="2019-06-10T13:41:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/10/2019</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>关键字 <code>enum</code> 可以将一组具名的值的有限集合创建为一种新的类型，而这些具名的值可以作为常规的程序组件使用。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/10/Java编程思想——第十九章：枚举类型/">展开全文 >></a>
-        </p>
-      
-
-      
-
-		
-</div></div></article>
-  
-    <article id="post-Java编程思想——第二十章：注解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/09/Java编程思想——第二十章：注解/">Java编程思想——第二十章：注解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/09/Java编程思想——第二十章：注解/" class="archive-article-date">
-  	<time datetime="2019-06-09T09:51:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/09/2019</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>注解</strong> 也被成为元数据，为我们在代码中添加信息提供了一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/09/Java编程思想——第二十章：注解/">展开全文 >></a>
-        </p>
-      
-
-      
-
-		
-</div></div></article>
-  
-    <article id="post-Java编程思想——第十六章：数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/08/Java编程思想——第十六章：数组/">Java编程思想——第十六章：数组</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/08/Java编程思想——第十六章：数组/" class="archive-article-date">
-  	<time datetime="2019-06-08T09:51:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/08/2019</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-数组为什么特殊"><a href="#1-数组为什么特殊" class="headerlink" title="1.数组为什么特殊"></a>1.数组为什么特殊</h4><p>数组与其他种类的容器的区别有三方面：效率、类型和保存基本类型的能力。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/08/Java编程思想——第十六章：数组/">展开全文 >></a>
-        </p>
-      
-
-      
-
-		
-</div></div></article>
-  
-    <article id="post-Java编程思想——第十五章：泛型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/07/Java编程思想——第十五章：泛型/">Java编程思想——第十五章：泛型</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/07/Java编程思想——第十五章：泛型/" class="archive-article-date">
-  	<time datetime="2019-06-07T00:44:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/07/2019</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>泛型实现了 <strong>参数化类型</strong> 的概念，使代码可以应用多种类型。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/07/Java编程思想——第十五章：泛型/">展开全文 >></a>
-        </p>
-      
-
-      
-
-		
-</div></div></article>
-  
-    <article id="post-Java编程思想——第十四章：类型信息" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/06/Java编程思想——第十四章：类型信息/">Java编程思想——第十四章：类型信息 </a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/06/Java编程思想——第十四章：类型信息/" class="archive-article-date">
-  	<time datetime="2019-06-06T13:11:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/06/2019</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>运行时类型信息使得你可以在程序运行时发现和使用类型信息。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/06/Java编程思想——第十四章：类型信息/">展开全文 >></a>
-        </p>
-      
-
-      
-
-		
-</div></div></article>
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
   
+
+  
+
+  
+
+  
+
+
+
 
 
           </div>
@@ -729,8 +290,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
