@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/6 | DPM&#39;s Blog</title>
+  <title>再拾Java基础（二） | DPM&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DPM&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/06/page/2/index.html">
+  <meta name="description" content="一、final关键字final可以修饰类、方法和变量，被修饰的这些类、方法和变量都有 不可更改 的意思。">
+<meta name="keywords" content="Java,basic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="再拾Java基础（二）">
+<meta property="og:url" content="http://yoursite.com/2019/07/04/再拾Java基础（二）/index.html">
 <meta property="og:site_name" content="DPM&#39;s Blog">
+<meta property="og:description" content="一、final关键字final可以修饰类、方法和变量，被修饰的这些类、方法和变量都有 不可更改 的意思。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-04T11:40:44.470Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DPM&#39;s Blog">
+<meta name="twitter:title" content="再拾Java基础（二）">
+<meta name="twitter:description" content="一、final关键字final可以修饰类、方法和变量，被修饰的这些类、方法和变量都有 不可更改 的意思。">
   
     <link rel="alternative" href="/atom.xml" title="DPM&#39;s Blog" type="application/atom+xml">
   
@@ -130,320 +135,153 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-再拾Java基础（二）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      再拾Java基础（二）
+    </h1>
+  
+
+        
+        <a href="/2019/07/04/再拾Java基础（二）/" class="archive-article-date">
+  	<time datetime="2019-07-04T00:31:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>07/04/2019</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、final关键字"><a href="#一、final关键字" class="headerlink" title="一、final关键字"></a>一、final关键字</h3><p>final可以修饰类、方法和变量，被修饰的这些类、方法和变量都有 <strong>不可更改</strong> 的意思。</p>
+<a id="more"></a>
+<p>final修饰的类：该类不能被继承</p>
+<p>final修饰的方法：该方法不能被重写Override</p>
+<p>final修饰的变量：该变量不能被重新赋值</p>
+<ul>
+<li>final修饰成员变量：声明时需要同时初始化，可以 <strong>直接赋值</strong> 或者通过 <strong>静态代码块</strong> 赋值。</li>
+<li>final修饰局部变量：声明时可以不初始化，在使用前需要一次赋值，并且只能赋一次值。也可以通过构造代码块初始化。</li>
+</ul>
+<h3 id="二、接口"><a href="#二、接口" class="headerlink" title="二、接口"></a>二、接口</h3><p>接口是一种引用数据类型（还有数组和类），继承它的实现类需要重写其中的所有抽象方法。</p>
+<p>接口中只能存在以下5种内容：</p>
+<ul>
+<li><p>自定义常量：默认是<code>static final</code>的；</p>
+</li>
+<li><p>抽象方法：给实现类重写，默认是<code>abstract</code>的</p>
+</li>
+<li><p>默认方法(java8)：实现类重写抽象方法时，方法体都是一样的，那么可以使用默认方法简化</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">default</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"hello"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>静态方法(java8)：作为工具方法使用，使用类名.静态方法调用</p>
+</li>
+<li><p>私有方法(java9)：只能在接口内部使用</p>
+</li>
+</ul>
+<p>接口之间支持多继承，但不能相互实现。</p>
+<h3 id="三、多态"><a href="#三、多态" class="headerlink" title="三、多态"></a>三、多态</h3><p>多态发生在继承或实现的关系下，而且子类需要重写父类的方法。在格式上的体现为：父类引用指向子类。</p>
+<p>多态产生的效果之和子类与父类之间的方法重写有关，和其他成员无关（成员变量）。</p>
+<h3 id="四、内部类"><a href="#四、内部类" class="headerlink" title="四、内部类"></a>四、内部类</h3><p>内部类分为成员内部类和局部内部类。</p>
+<h5 id="成员内部类："><a href="#成员内部类：" class="headerlink" title="成员内部类："></a>成员内部类：</h5><p>定义在类中方法外。内部类可以访问外部类的所有成员。当内部类有成员变量和外部类的成员变量重名时，调用内部成员变量的格式：<code>this.变量</code>，调用外部类的成员变量的格式：<code>外部类.this.变量</code></p>
+<h5 id="局部内部类："><a href="#局部内部类：" class="headerlink" title="局部内部类："></a>局部内部类：</h5><p>定义在成员方法中，只能在该成员方法中进行对象的创建和使用，局部内部类可以访问外部类和所属方法的的所有内容。但是当这三个地方有着一个重名的变量的时候，局部内部类不能访问和修改所属方法中的局部变量和类中的成员变量，根本原因在于声明周期的不同。</p>
+<p>匿名内部类是局部内部类的一种，这个类只使用一次。可以使用Lambda表达式简化写法。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/06/Java编程思想——第十四章：类型信息/" class="archive-article-date">
-  	<time datetime="2019-06-06T13:11:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/06/2019</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/06/Java编程思想——第十四章：类型信息/">Java编程思想——第十四章：类型信息 </a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">basic</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+
+		
+		  <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+/*
+  var gitalk = new Gitalk({
+    clientID: 'b8fd6bd3120cbf2ced01',
+    clientSecret: 'a38a5fecc452b37bb84edaa96a5ef39c0fae7742',
+    id: "再拾Java基础（二）",
+    repo: 'daffupman.github.io',
+    owner: 'Daffupman',
+    admin: 'Daffupman',
+    distractionFreeMode: 'true',
+  })
+  gitalk.render('gitalk-container')
+  */
+</script>
+
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/05/Java编程思想——第十三章：字符串/" class="archive-article-date">
-  	<time datetime="2019-06-05T07:13:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/05/2019</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/22/队列-Queue/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">队列(Queue)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/05/Java编程思想——第十三章：字符串/">Java编程思想——第十三章：字符串</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/04/Java编程思想——第十二章：通过异常处理错误/" class="archive-article-date">
-  	<time datetime="2019-06-04T13:32:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/04/2019</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/04/Java编程思想——第十二章：通过异常处理错误/">Java编程思想——第十二章：通过异常处理错误</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/03/Java编程思想——第十一章：持有对象/" class="archive-article-date">
-  	<time datetime="2019-06-03T12:21:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/03/2019</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/03/Java编程思想——第十一章：持有对象/">Java编程思想——第十一章：持有对象</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/02/Java编程思想——第九章：接口/" class="archive-article-date">
-  	<time datetime="2019-06-02T04:37:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/02/2019</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/02/Java编程思想——第九章：接口/">Java编程思想——第九章：接口</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/01/Java编程思想——第八章：多态/" class="archive-article-date">
-  	<time datetime="2019-06-01T08:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/01/2019</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/01/Java编程思想——第八章：多态/">Java编程思想——第八章：多态</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/01/Java编程思想——第七章：复用类/" class="archive-article-date">
-  	<time datetime="2019-06-01T03:19:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>06/01/2019</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/01/Java编程思想——第七章：复用类/">Java编程思想——第七章：复用类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/06/">&laquo; Prev</a><a class="page-number" href="/archives/2019/06/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 
           </div>
@@ -466,8 +304,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
